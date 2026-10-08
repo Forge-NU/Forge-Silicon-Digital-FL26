@@ -3,18 +3,12 @@
 One-line description of what this is and who it's for.
 
 ## Team
-- **Project Lead:**
-- **Members:**
-- **Semester:**
+- **Project Lead: Ryan Kim**
+- **Members: Holly, Chase, Alex, Ian**
+- **Semester: Fall 2026**
 
 ## Why This Exists
 A couple sentences on the problem and the "purpose" behind building it — who has this problem, and why it matters.
-
-## Tech Stack
-- Frontend:
-- Backend:
-- Database:
-- Infra/Deploy:
 
 ## Getting Started
 ```
@@ -37,7 +31,7 @@ cd <repo-name>
 ```
 
 ## Design Docs
-Link to Figma / design review slides / architecture doc here.
+Link to design review slides / architecture doc here.
 
 ## Contributing
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for our git workflow and how to open a ticket.
