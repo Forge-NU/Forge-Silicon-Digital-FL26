@@ -7,7 +7,7 @@
 //
 // Output code is offset binary: 0 = -Vref, mid-scale = 0 V differential,
 // all ones = +Vref. Invert result[N-1] downstream if two's complement is needed.
-`timescale 1 ns/1ps
+`timescale 1ns/1ps
 module sar_fsm #(
     parameter int N_MSB         = 6, 	// bits in the MSB sub-array
     parameter int N_LSB         = 6, 	// bits in the LSB sub-array
