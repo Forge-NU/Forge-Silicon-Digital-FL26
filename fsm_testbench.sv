@@ -57,7 +57,7 @@ module tb_sar_fsm;
     // Behavioral comparator + DAC model
     // ------------------------------------------------------------------
     real vin  = 0.0;     // differential input, Vinp - Vinn
-    real vdac = 0.0;     // differential DAC output, Vdacp - Vdacn
+    real vdac;           // differential DAC output, Vdacp - Vdacn
 
     always_comb begin
         vdac     = (2.0 * $itor(dac_pos) / FULL - 1.0) * VREF;
