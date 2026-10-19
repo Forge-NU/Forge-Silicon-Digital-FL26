@@ -7,6 +7,10 @@
 //   - exactly one comp_strobe per step
 //   - no outputs while disabled or in reset
 //   - the right number of steps for each run
+//
+// The monitor tracks enable AND reset as the DUT saw them at the last
+// clock edge (en_q / rst_q), so its cycle count lines up with the DUT's
+// counter after both a re-enable and a reset release.
 module tb_bit_timer;
     logic       clk = 0, rst_n = 0, enable = 0;
     logic [7:0] div = 8'd12, strobe_at = 8'd8;
@@ -24,19 +28,26 @@ module tb_bit_timer;
     // Bookkeeping
     // ------------------------------------------------------------------
     int errors = 0, checks = 0;
-    int since = 0;        // clocks since the last step (or since enable)
+    int since = 0;        // clocks since the last step (or since enable / reset release)
     int strobes = 0;      // strobes seen since the last step
     int steps_seen = 0;   // total steps seen
-    logic en_q = 0;       // the enable value the DUT saw at the last clock edge
+    logic en_q  = 0;      // the enable value the DUT saw at the last clock edge
+    logic rst_q = 0;      // 1 if the DUT was out of reset at the last clock edge
 
     always @(posedge clk) en_q <= enable;
+
+    // Mirrors the DUT's async reset: asserts immediately, releases at the
+    // first clock edge after rst_n goes high (when the DUT starts counting).
+    always @(posedge clk or negedge rst_n)
+        if (!rst_n) rst_q <= 1'b0;
+        else        rst_q <= 1'b1;
 
     task automatic check(input bit cond, input string msg);
         checks++;
         if (!cond) begin
             errors++;
-            $display("FAIL @ %0t ns: %s (div=%0d, strobe_at=%0d, since=%0d)",
-                     $time, msg, div, strobe_at, since);
+            $display("FAIL @ %t: %s (div=%0d, strobe_at=%0d, since=%0d)",
+                     $realtime, msg, div, strobe_at, since);
         end
     endtask
 
@@ -44,7 +55,7 @@ module tb_bit_timer;
     // Monitor: look at the outputs in the middle of every clock cycle
     // ------------------------------------------------------------------
     always @(negedge clk) begin
-        if (!rst_n || !en_q) begin
+        if (!rst_q || !en_q) begin
             check(!step && !comp_strobe, "output active while disabled or in reset");
             since   = 0;
             strobes = 0;
@@ -86,6 +97,7 @@ module tb_bit_timer;
     // ------------------------------------------------------------------
     initial begin
         int start_steps;
+        $timeformat(-9, 3, " ns", 0);   // %t prints in ns with 3 decimals
         $dumpfile("dump.vcd");
         $dumpvars;
 
