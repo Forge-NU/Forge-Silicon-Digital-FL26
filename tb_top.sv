@@ -4,13 +4,17 @@
 //
 // Models:
 //   - sample-and-hold: the input is frozen when sample falls
-//   - latched comparator: decides (vin_held >= dac_code) only on comp_strobe,
+//   - differential input: vin is the offset-binary code of (Vinp - Vinn),
+//     so mid-scale = 0 V differential
+//   - latched comparator: decides (Vinp - Vinn) >= (Vdacp - Vdacn) only on
+//     comp_strobe, using both dac_pos and dac_neg,
 //     and its output goes to X once the FSM has consumed it on step. If the
 //     FSM ever reads the comparator without a fresh strobe, X ends up in the
 //     result and the result check fails.
 //
 // Rules checked:
 //   - every conversion's result equals the held input
+//   - dac_neg is always the inverse of dac_pos
 //   - sample window lasts SAMPLE_CYCLES*div + 1 clocks
 //   - conversion (sample rising -> eoc) lasts (SAMPLE_CYCLES+N)*div + 2 clocks
 //   - free-run: eoc pulses are (SAMPLE_CYCLES+N)*div + 3 clocks apart
@@ -26,15 +30,15 @@ module tb_top;
     logic [7:0]   div = 8'd12, strobe_at = 8'd8;
     logic         comp_out;            // starts as X until the first strobe
     logic         sample, comp_strobe, eoc;
-    logic [N-1:0] dac_code, result;
+    logic [N-1:0] dac_pos, dac_neg, result;
 
     always #41.667 clk = ~clk;  // ~12 MHz
 
-    sar_adc_digital #(.N(N), .SAMPLE_CYCLES(SC)) dut (
+    sar_adc_digital dut (
         .clk(clk), .rst_n(rst_n), .start(start), .comp_out(comp_out),
         .div(div), .strobe_at(strobe_at),
         .sample(sample), .comp_strobe(comp_strobe),
-        .dac_code(dac_code), .result(result), .eoc(eoc)
+        .dac_pos(dac_pos), .dac_neg(dac_neg), .result(result), .eoc(eoc)
     );
 
     // ------------------------------------------------------------------
@@ -49,9 +53,18 @@ module tb_top;
     // its decision has been used.
     wire step = dut.step;
 
+    // Differential voltages in units of half an LSB:
+    //   input: Vinp - Vinn   ~ 2*vin_held - MAX
+    //   CDAC:  Vdacp - Vdacn ~ dac_pos - dac_neg  (= 2*code - MAX when dac_neg = ~dac_pos)
+    int v_in_diff, v_dac_diff;
+    always_comb begin
+        v_in_diff  = 2 * int'(vin_held) - MAX;
+        v_dac_diff = int'(dac_pos) - int'(dac_neg);
+    end
+
     always @(posedge clk) begin
-        if (comp_strobe) comp_out <= (vin_held >= dac_code);  // 1 = Vin >= Vdac
-        else if (step)   comp_out <= 1'bx;                    // decision consumed
+        if (comp_strobe) comp_out <= (v_in_diff >= v_dac_diff);  // 1 = trial bit kept
+        else if (step)   comp_out <= 1'bx;                        // decision consumed
     end
 
     // ------------------------------------------------------------------
@@ -82,7 +95,8 @@ module tb_top;
     // ------------------------------------------------------------------
     always @(negedge clk) begin
         if (!rst_n) begin
-            check(!sample && !comp_strobe && !eoc && result == '0 && dac_code == '0,
+            check(!sample && !comp_strobe && !eoc && result == '0 &&
+                  dac_pos == '0 && dac_neg == MAX,
                   "outputs not cleared during reset");
         end else begin
             if (sample && !sample_d)
@@ -118,6 +132,9 @@ module tb_top;
 
             if (idle_window)
                 check(!sample && !comp_strobe && !eoc, "activity while idle");
+
+            if (dac_neg !== ~dac_pos)
+                check(0, "dac_neg is not the inverse of dac_pos");
         end
         sample_d = sample;
         eoc_d    = eoc;

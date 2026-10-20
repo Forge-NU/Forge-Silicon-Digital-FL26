@@ -17,9 +17,11 @@ module sar_fsm #(
     input  logic clk,
     input  logic rst_n,	// active-low async reset
     input  logic start, // pulse to begin a conversion
+    input  logic step,  // from bit_timer: move forward one step
     input  logic comp_out, 	// comparator decision
 
     output logic sample,  // closes the sampling switches (overrides code at the switch driver)
+    output logic busy,    // tells bit_timer to run
     output logic [N-1:0] result,        // final conversion result (offset binary)
     output logic [N-1:0] dac_pos,       // P-side capacitor switch controls
     output logic [N-1:0] dac_neg,       // N-side controls (inverse of dac_pos)
@@ -89,8 +91,8 @@ Goes to IDLE after 1 clock cycle
         next_state = state;
         unique case (state)
             S_IDLE:    if (start)   next_state = S_SAMPLE;
-            S_SAMPLE:  if (sample_cnt == SAMPLE_CYCLES - 1) next_state = S_CONVERT;
-            S_CONVERT: if (bit_idx == 0) next_state = S_DONE;
+            S_SAMPLE:  if (step && sample_cnt == SAMPLE_CYCLES - 1) next_state = S_CONVERT;
+            S_CONVERT: if (step && bit_idx == 0) next_state = S_DONE;
             S_DONE:   next_state = S_IDLE;
             default:  next_state = S_IDLE;
         endcase
@@ -100,6 +102,7 @@ Goes to IDLE after 1 clock cycle
     // Outputs that depend only on state / the trial register
     // ------------------------------------------------------------------
     assign sample  = (state == S_SAMPLE);
+    assign busy    = (state != S_IDLE);
     assign dac_pos = dac_code;
     assign dac_neg = ~dac_code;
 
@@ -123,13 +126,13 @@ Goes to IDLE after 1 clock cycle
                     sample_cnt <= '0;
                 end
 
-                S_SAMPLE: begin
+                S_SAMPLE: if (step) begin
                     sample_cnt <= sample_cnt + 1'b1;
                     dac_code   <= MSB_ONLY;    // preload first trial
                     bit_idx    <= N - 1;
                 end
 
-                S_CONVERT: begin
+                S_CONVERT: if (step) begin
                     // Keep the trial bit if comparator says 1, clear it if 0
                     dac_code[bit_idx] <= comp_out;
 
@@ -151,5 +154,3 @@ Goes to IDLE after 1 clock cycle
     end
 
 endmodule
-
-
