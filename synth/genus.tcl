@@ -14,7 +14,7 @@ file mkdir $SYN_DIR/outputs
 read_libs $LIB_FILE
 
 # ---- 2. Read bit_timer and build it ---------------------------------
-read_hdl -sv $REPO/bit_timer.sv
+read_hdl -sv $REPO/sar_adc_digital/rtl/bit_timer.sv
 elaborate bit_timer
 check_design -unresolved
 
