@@ -16,7 +16,7 @@ module tb_sar_fsm;
     localparam int  N             = N_MSB + N_LSB;
     localparam int  SAMPLE_CYCLES = 3;
     localparam int  FULL          = 1 << N;
-    localparam real VREF          = 1.0;
+    localparam real VREF          = 1.8;
     localparam int  TIMEOUT       = 4 * (N + SAMPLE_CYCLES + 4);   // generous cycle limit per conversion
 
     // DUT signals
