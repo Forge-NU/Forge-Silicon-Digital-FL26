@@ -21,49 +21,49 @@ module btle_tx #
   parameter integer IQ_BIT_WIDTH = 8,
   parameter integer GAUSS_FIR_OUT_AMP_SCALE_DOWN_NUM_BIT_SHIFT = 1
 ) (
-  input wire clk, // for baseband processing, 16MHz
-  input wire rst,
+  input logic clk, // for baseband processing, 16MHz
+  input logic rst,
 
-  input wire clkb, // for writing pkt to ram with different/higher clock speed
+  input logic clkb, // for writing pkt to ram with different/higher clock speed
 
-  `KEEP_FOR_DBG input wire [3:0] gauss_filter_tap_index, // only need to set 0~8, 9~16 will be mirror of 0~7
-  `KEEP_FOR_DBG input wire signed [(GAUSS_FILTER_BIT_WIDTH-1) : 0] gauss_filter_tap_value,
+  `KEEP_FOR_DBG input logic [3:0] gauss_filter_tap_index, // only need to set 0~8, 9~16 will be mirror of 0~7
+  `KEEP_FOR_DBG input logic signed [(GAUSS_FILTER_BIT_WIDTH-1) : 0] gauss_filter_tap_value,
   
-  `KEEP_FOR_DBG input  wire [(SIN_COS_ADDR_BIT_WIDTH-1) : 0] cos_table_write_address,
-  `KEEP_FOR_DBG input  wire signed [(IQ_BIT_WIDTH-1) : 0] cos_table_write_data,
-  `KEEP_FOR_DBG input  wire [(SIN_COS_ADDR_BIT_WIDTH-1) : 0] sin_table_write_address,
-  `KEEP_FOR_DBG input  wire signed [(IQ_BIT_WIDTH-1) : 0] sin_table_write_data,
+  `KEEP_FOR_DBG input  logic [(SIN_COS_ADDR_BIT_WIDTH-1) : 0] cos_table_write_address,
+  `KEEP_FOR_DBG input  logic signed [(IQ_BIT_WIDTH-1) : 0] cos_table_write_data,
+  `KEEP_FOR_DBG input  logic [(SIN_COS_ADDR_BIT_WIDTH-1) : 0] sin_table_write_address,
+  `KEEP_FOR_DBG input  logic signed [(IQ_BIT_WIDTH-1) : 0] sin_table_write_data,
 
-  `KEEP_FOR_DBG input  wire [7:0]  preamble,
+  `KEEP_FOR_DBG input  logic [7:0]  preamble,
 
-  `KEEP_FOR_DBG input  wire [31:0] access_address,
-  `KEEP_FOR_DBG input  wire [(CRC_STATE_BIT_WIDTH-1) : 0] crc_state_init_bit, // load into lfsr (linear feedback shift register) upon crc_state_init_bit_load==1
-  `KEEP_FOR_DBG input  wire crc_state_init_bit_load,
-  `KEEP_FOR_DBG input  wire [(CHANNEL_NUMBER_BIT_WIDTH-1) : 0] channel_number, // load into lfsr (linear feedback shift register) upon channel_number_load==1
-  `KEEP_FOR_DBG input  wire channel_number_load,
+  `KEEP_FOR_DBG input  logic [31:0] access_address,
+  `KEEP_FOR_DBG input  logic [(CRC_STATE_BIT_WIDTH-1) : 0] crc_state_init_bit, // load into lfsr (linear feedback shift register) upon crc_state_init_bit_load==1
+  `KEEP_FOR_DBG input  logic crc_state_init_bit_load,
+  `KEEP_FOR_DBG input  logic [(CHANNEL_NUMBER_BIT_WIDTH-1) : 0] channel_number, // load into lfsr (linear feedback shift register) upon channel_number_load==1
+  `KEEP_FOR_DBG input  logic channel_number_load,
 
-  `KEEP_FOR_DBG input  wire [7:0] pdu_octet_mem_data,
-  `KEEP_FOR_DBG input  wire [NUM_BIT_PAYLOAD_LENGTH:0] pdu_octet_mem_addr,
+  `KEEP_FOR_DBG input  logic [7:0] pdu_octet_mem_data,
+  `KEEP_FOR_DBG input  logic [NUM_BIT_PAYLOAD_LENGTH:0] pdu_octet_mem_addr,
 
-  `KEEP_FOR_DBG input  wire tx_start,
+  `KEEP_FOR_DBG input  logic tx_start,
 
-  `KEEP_FOR_DBG output wire signed [(IQ_BIT_WIDTH-1) : 0] i,
-  `KEEP_FOR_DBG output wire signed [(IQ_BIT_WIDTH-1) : 0] q,
-  `KEEP_FOR_DBG output wire iq_valid,
-  `KEEP_FOR_DBG output wire iq_valid_last,
+  `KEEP_FOR_DBG output logic signed [(IQ_BIT_WIDTH-1) : 0] i,
+  `KEEP_FOR_DBG output logic signed [(IQ_BIT_WIDTH-1) : 0] q,
+  `KEEP_FOR_DBG output logic iq_valid,
+  `KEEP_FOR_DBG output logic iq_valid_last,
 
   // for debug purpose
-  `KEEP_FOR_DBG output wire phy_bit,
-  `KEEP_FOR_DBG output wire phy_bit_valid,
-  `KEEP_FOR_DBG output wire phy_bit_valid_last,
+  `KEEP_FOR_DBG output logic phy_bit,
+  `KEEP_FOR_DBG output logic phy_bit_valid,
+  `KEEP_FOR_DBG output logic phy_bit_valid_last,
 
-  `KEEP_FOR_DBG output wire bit_upsample,
-  `KEEP_FOR_DBG output wire bit_upsample_valid,
-  `KEEP_FOR_DBG output wire bit_upsample_valid_last,
+  `KEEP_FOR_DBG output logic bit_upsample,
+  `KEEP_FOR_DBG output logic bit_upsample_valid,
+  `KEEP_FOR_DBG output logic bit_upsample_valid_last,
 
-  `KEEP_FOR_DBG output wire signed [(GAUSS_FILTER_BIT_WIDTH-1) : 0] bit_upsample_gauss_filter,
-  `KEEP_FOR_DBG output wire bit_upsample_gauss_filter_valid,
-  `KEEP_FOR_DBG output wire bit_upsample_gauss_filter_valid_last
+  `KEEP_FOR_DBG output logic signed [(GAUSS_FILTER_BIT_WIDTH-1) : 0] bit_upsample_gauss_filter,
+  `KEEP_FOR_DBG output logic bit_upsample_gauss_filter_valid,
+  `KEEP_FOR_DBG output logic bit_upsample_gauss_filter_valid_last
 );
 
 localparam [1:0] IDLE               = 0,
@@ -71,33 +71,33 @@ localparam [1:0] IDLE               = 0,
                  TX_PDU             = 2,
                  WAIT_LAST_SAMPLE   = 3;
 
-`KEEP_FOR_DBG reg  [1:0] phy_tx_state;
-`KEEP_FOR_DBG reg  [NUM_BIT_PAYLOAD_LENGTH:0] addr;
-`KEEP_FOR_DBG wire [7:0] data;
-`KEEP_FOR_DBG reg  [7:0] octet;
+`KEEP_FOR_DBG logic [1:0] phy_tx_state;
+`KEEP_FOR_DBG logic [NUM_BIT_PAYLOAD_LENGTH:0] addr;
+`KEEP_FOR_DBG logic [7:0] data;
+`KEEP_FOR_DBG logic [7:0] octet;
 // wire adv_pdu_flag;
-`KEEP_FOR_DBG reg  [NUM_BIT_PAYLOAD_LENGTH:0] payload_length;
-`KEEP_FOR_DBG reg  [(NUM_BIT_PAYLOAD_LENGTH+3):0] bit_count;
-`KEEP_FOR_DBG reg  [5:0] bit_count_preamble_access;
+`KEEP_FOR_DBG logic [NUM_BIT_PAYLOAD_LENGTH:0] payload_length;
+`KEEP_FOR_DBG logic [(NUM_BIT_PAYLOAD_LENGTH+3):0] bit_count;
+`KEEP_FOR_DBG logic [5:0] bit_count_preamble_access;
 
-`KEEP_FOR_DBG reg info_bit;
-`KEEP_FOR_DBG reg info_bit_valid;
-`KEEP_FOR_DBG reg info_bit_valid_last;
+`KEEP_FOR_DBG logic info_bit;
+`KEEP_FOR_DBG logic info_bit_valid;
+`KEEP_FOR_DBG logic info_bit_valid_last;
 
-`KEEP_FOR_DBG reg  [39:0] preamble_access_address;
+`KEEP_FOR_DBG logic [39:0] preamble_access_address;
 
-`KEEP_FOR_DBG wire info_bit_after_crc24;
-`KEEP_FOR_DBG wire info_bit_after_crc24_valid;
-`KEEP_FOR_DBG wire info_bit_after_crc24_valid_last;
+`KEEP_FOR_DBG logic info_bit_after_crc24;
+`KEEP_FOR_DBG logic info_bit_after_crc24_valid;
+`KEEP_FOR_DBG logic info_bit_after_crc24_valid_last;
 
 // wire phy_bit;
 // wire phy_bit_valid;
 // wire phy_bit_valid_last;
 
-`KEEP_FOR_DBG wire signed [(IQ_BIT_WIDTH-1) : 0] i_internal;
-`KEEP_FOR_DBG wire signed [(IQ_BIT_WIDTH-1) : 0] q_internal;
+`KEEP_FOR_DBG logic signed [(IQ_BIT_WIDTH-1) : 0] i_internal;
+`KEEP_FOR_DBG logic signed [(IQ_BIT_WIDTH-1) : 0] q_internal;
 
-`KEEP_FOR_DBG reg [6:0] clk_count; // assume clk speed 16M, baseband phy_bit rate 1M. octet rate 1/8M. need 128x clk speed down to read octet memory.
+`KEEP_FOR_DBG logic [6:0] clk_count; // assume clk speed 16M, baseband phy_bit rate 1M. octet rate 1/8M. need 128x clk speed down to read octet memory.
 
 // assign adv_pdu_flag = (channel_number==37 || channel_number==38 || channel_number==39);
 
@@ -105,7 +105,7 @@ assign i = (phy_tx_state == IDLE? 0 : i_internal);
 assign q = (phy_tx_state == IDLE? 0 : q_internal);
 
 // state machine to extract payload length and check crc
-always @ (posedge clk) begin
+always_ff @ (posedge clk) begin
   if (rst) begin
     addr <= 0;
     octet <= 0;
@@ -296,4 +296,3 @@ gfsk_modulation # (
 );
 
 endmodule
-
