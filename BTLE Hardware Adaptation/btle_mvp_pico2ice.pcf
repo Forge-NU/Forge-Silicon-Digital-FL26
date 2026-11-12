@@ -1,0 +1,50 @@
+# btle_mvp_pico2ice.pcf  --  example pin assignment for btle_mvp_top on the pico2-ice
+#
+# Pin numbers are iCE40UP5K SG48 package pins.  On the pico2-ice pinout image, "ICEnn" is pin nn.
+#
+# WHAT IS VERIFIED
+#   * The global-clock input pins of the SG48 package are 20, 35, 37 and 44 (Lattice answer
+#     database, "iCE40UP external clock pins").  All four appear on your pinout image.
+#   * The pinout image shows ICE20 on the right-hand RP-ICE PMOD, which is on the 3V3 rail, and
+#     shows PMOD B (left, top) on 3V3 as well.  PMOD A (left, bottom) is labelled VIO2, a separate
+#     bank supply.
+# WHAT IS NOT VERIFIED
+#   * Which pin the RP2350 drives the FPGA clock into (35 here, as on the original pico-ice).
+#   * Every assignment marked SUGGESTED.  I only had the pinout picture, not the schematic.
+#
+# RULES BEHIND THE CHOICES
+#   * rxclk_in must be on a global-clock pin: 20 (G3), 37 (G1) or 44 (G6).  Pin 35 (G0) is used
+#     by the board's clock input, and 44 sits on the VIO2 bank (see below).  Pin 20 also goes
+#     to RP2350 GPIO22 on the RP-ICE PMOD, so that RP pin must stay an input.
+#   * All eight LVDS-side and radio-side signals below go to 3.3 V pins.  The SN65LVDS049 needs
+#     a driver-input high of at least 2 V and its receiver outputs swing to 3.3 V; a bank
+#     powered below 3.3 V would break both.  If you use PMOD A, set VIO2 to 3.3 V first.
+#   * nextpnr-ice40 promotes a clock net that comes from a pin to a global buffer by itself;
+#     bb_clkgen.v adds an explicit SB_GB for bb_clk when ICE40 is defined.
+#
+# Build (example):  yosys -p "read_verilog -DICE40 ..." ; nextpnr-ice40 --up5k --package sg48
+#                   --pcf btle_mvp_pico2ice.pcf --freq 12 ; and constrain rxclk_in to 64 MHz.
+
+# --- clocks
+set_io clk_local   35     # ASSUMED: RP2350-driven FPGA clock (G0).  Match CFG_CLK_LOCAL_HZ.
+set_io rxclk_in    20     # RXCLK from the SN65LVDS049 ROUT1, 64 MHz, G3, 3V3 RP-ICE PMOD
+
+# --- I/Q link through the SN65LVDS049, all on PMOD B (3V3)       SUGGESTED
+set_io rxd_in      31     # ROUT2  (RXD24)
+set_io txd_out     32     # DIN2   (TXD)
+set_io txclk_out   34     # DIN1   (TXCLK)
+
+# --- radio SPI and reset to the XPRO J100 header                 SUGGESTED
+set_io rf_rstn     28     # J100 pin 7 (RESET)
+set_io rf_seln     36     # J100 pin 15 (SPI_SS_A)
+set_io rf_mosi     38     # J100 pin 16
+set_io rf_miso     42     # J100 pin 17
+set_io rf_sclk     43     # J100 pin 18
+
+# --- debug outputs: choose free 3V3 pins, or the board's own LEDs and UART from the schematic
+# set_io uart_txd    <pin>
+# set_io led_ready   <pin>
+# set_io led_fault   <pin>
+# set_io led_rx_ok   <pin>
+# set_io led_tx      <pin>
+# set_io rst_ext     <pin>    # or tie rst_ext low in the top level wrapper
