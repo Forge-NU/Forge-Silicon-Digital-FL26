@@ -1,0 +1,37 @@
+# Pin file for btle_tx_fpga_top on the pico2-ice (iCE40UP5K-SG48)
+# Pin numbers from tinyvision-ai-inc/pico-ice-sdk rtl/pico2_ice.pcf
+#
+# Only FPGA-only pins are used. Avoided on purpose:
+#   18-21, 23, 25-27  ICE_RP_PMOD (shared with the RP2350)
+#   9, 11             default UART/I2C to the RP2350
+#   12-17             flash / programming SPI
+#   37                SRAM chip select
+#   10                FPGA push button
+
+# Clock from the RP2350 (global clock pin)
+set_io clk 35
+
+# I (8 bits) on PMOD A: A_TOP IO1-IO4, then A_BOT IO1-IO4
+set_io i_out[0] 4
+set_io i_out[1] 2
+set_io i_out[2] 45
+set_io i_out[3] 47
+set_io i_out[4] 3
+set_io i_out[5] 44
+set_io i_out[6] 46
+set_io i_out[7] 48
+
+# Q (8 bits) on PMOD B: B_TOP IO1-IO4, then B_BOT IO1-IO4
+set_io q_out[0] 43
+set_io q_out[1] 38
+set_io q_out[2] 34
+set_io q_out[3] 31
+set_io q_out[4] 42
+set_io q_out[5] 36
+set_io q_out[6] 32
+set_io q_out[7] 28
+
+# FPGA RGB LED (dedicated RGB driver pins)
+set_io led_g 39
+set_io led_b 40
+set_io led_r 41
