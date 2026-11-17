@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/mnt/c/Users/Me/Coding/ForgeC/init_wait/build/_deps/picotool-build/enc_bootloader_mbedtls/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

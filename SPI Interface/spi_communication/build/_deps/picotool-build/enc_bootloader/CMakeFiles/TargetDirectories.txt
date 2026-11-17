@@ -1,0 +1,2 @@
+/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build/enc_bootloader/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build/enc_bootloader/CMakeFiles/rebuild_cache.dir
