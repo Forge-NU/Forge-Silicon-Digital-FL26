@@ -8,7 +8,7 @@
 //   - an advertising packet (ADV_NONCONN_IND, name "ICE40") on channel 37
 // Then it transmits that packet over and over, every TX_INTERVAL clocks.
 //
-// The 8-bit I/Q goes to pins for now. Later this is replaced by the
+// The 8-bit I/Q goes to the PMOD pins for now. Later this is replaced by the
 // 4 MS/s conversion + LVDS serializer to the AT86RF215.
 //
 // Build note: sin_table.hex must be in the folder you run yosys from.
@@ -19,11 +19,12 @@
 module btle_tx_fpga_top #(
   parameter int TX_INTERVAL = 1600000   // 100 ms at 16 MHz
 ) (
-  input  logic              clk,          // 16 MHz (later: PLL or radio RXCLK / 4)
-  output logic signed [7:0] i_out,
-  output logic signed [7:0] q_out,
-  output logic              iq_valid_out,
-  output logic              tx_busy_led
+  input  logic              clk,          // pin 35: clock from the RP2350 (16 MHz expected)
+  output logic signed [7:0] i_out,        // PMOD A (FPGA-only pins)
+  output logic signed [7:0] q_out,        // PMOD B (FPGA-only pins)
+  output logic              led_g,        // FPGA RGB LED, driven through SB_RGBA_DRV
+  output logic              led_b,
+  output logic              led_r
 );
 
   // ---------------- power-on reset ----------------
@@ -228,7 +229,34 @@ module btle_tx_fpga_top #(
     end
   end
 
-  assign tx_busy_led = (state == S_TX);
+  // ---------------- status LED ----------------
+  // red   = still loading (stuck here = loader problem)
+  // green = toggles once per packet: blinks at ~5 Hz with a 16 MHz clock
+  //         (slower or faster blinking means the clock is not 16 MHz)
+  // blue  = off
+  logic loaded = 1'b0;
+  logic pkt_toggle = 1'b0;
+  always_ff @(posedge clk) begin
+    if (state == S_CONFIG) loaded <= 1'b1;
+    if (state == S_TX && iq_valid_last) pkt_toggle <= ~pkt_toggle;
+  end
+
+  // The LED pins (39, 40, 41) are the iCE40's dedicated RGB current drivers
+  SB_RGBA_DRV #(
+    .CURRENT_MODE ("0b1"),        // half-current mode
+    .RGB0_CURRENT ("0b000001"),   // lowest current: plenty bright
+    .RGB1_CURRENT ("0b000001"),
+    .RGB2_CURRENT ("0b000001")
+  ) rgb_drv (
+    .CURREN   (1'b1),
+    .RGBLEDEN (1'b1),
+    .RGB0PWM  (loaded & pkt_toggle),  // RGB0 = pin 39 = green
+    .RGB1PWM  (1'b0),                 // RGB1 = pin 40 = blue
+    .RGB2PWM  (~loaded),              // RGB2 = pin 41 = red
+    .RGB0     (led_g),
+    .RGB1     (led_b),
+    .RGB2     (led_r)
+  );
 
   // ---------------- the transmitter ----------------
   btle_tx btle_tx_i (
@@ -273,7 +301,6 @@ module btle_tx_fpga_top #(
     .bit_upsample_gauss_filter_valid_last ()
   );
 
-  assign iq_valid_out = iq_valid;
 
 endmodule
 
