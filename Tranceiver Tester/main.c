@@ -59,7 +59,7 @@
 #define PIN_SCK       15
 #define PIN_MOSI      17
 #define PIN_RSTN      20
-#define PIN_IRQ       21
+#define PIN_IRQ       24
 #define SPI_BAUD_HZ   1000000   /* datasheet max is 25 MHz; 1 MHz is easy to debug */
 
 /* ---------------- Register addresses ---------------- */
