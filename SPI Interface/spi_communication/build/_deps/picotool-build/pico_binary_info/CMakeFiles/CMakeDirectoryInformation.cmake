@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "/home/me/pico-sdk/src/common/pico_binary_info")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-build")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

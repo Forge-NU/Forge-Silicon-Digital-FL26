@@ -6,12 +6,12 @@
 
 /* ---------------- Pin / SPI configuration ---------------- */
 #define SPI_PORT      spi0
-#define PIN_MISO      16
-#define PIN_SELN      17
-#define PIN_SCK       18
-#define PIN_MOSI      19
-#define PIN_RSTN      27
-#define PIN_IRQ       26
+#define PIN_MISO      7
+#define PIN_SELN      5
+#define PIN_SCK       6
+#define PIN_MOSI      4
+#define PIN_RSTN      24
+#define PIN_IRQ       20
 #define SPI_BAUD_HZ   1000000   /* datasheet max is 25 MHz; 1 MHz is easy to debug */
 
 /* ---------------- Register addresses ---------------- */
@@ -81,7 +81,7 @@
  *     TXPREP/RX, so nothing is transmitted.
  * 0 = normal operation. Do NOT leave loopback on for real transmissions. */
 #ifndef IQ_LOOPBACK_TEST
-#define IQ_LOOPBACK_TEST   1
+#define IQ_LOOPBACK_TEST   0
 #endif
 
 /* 1 = set IQIFC0.CMV1V2: LVDS levels with 1.2 V common mode (IEEE 1596.3).
@@ -132,10 +132,47 @@ static uint8_t rf_read(uint16_t addr)
     seln(0);
     spi_write_read_blocking(SPI_PORT, tx, rx, 3);
     seln(1);
+    //printf("read 0x%04X: rx = %02X %02X %02X\n\n", addr, rx[0], rx[1], rx[2]);
+    return rx[2];
+}
+
+//TODO: remove after testing
+static uint8_t rf_loopback_test()
+{
+    printf("Performing loopback test \n");
+
+    uint8_t tx[3] = {0xA5, 0x5A, 0x3C}, rx[3] = {0};
+    
+    seln(0);
+    spi_write_read_blocking(SPI_PORT, tx, rx, 3);
+    seln(1);
+
+    printf("loopback: %02X %02X %02X\n", rx[0], rx[1], rx[2]);
+    
     return rx[2];
 }
 
 /* ====================== Radio helpers ====================== */
+
+/* Raw look at what the radio is doing. Interpretation:
+ *   all reads 0x00           MISO stuck low / chip not driving it (no power, no
+ *                            clock, held in reset, SELN/MISO wiring)
+ *   all reads 0xFF           MISO stuck high / pulled up / not connected
+ *   RF_PN = 0x34/0x35/0x36   SPI works (AT86RF215 / IQ / M)
+ *   IRQ pin = 1              chip finished power-on/reset (WAKEUP pending)  */
+static void rf_diag(const char *why)
+{
+    printf("---- radio diagnostics (%s) ----\n", why);
+    printf("pins: IRQ=%d  SELN=%d  RSTN=%d  MISO=%d\n",
+           gpio_get(PIN_IRQ), gpio_get(PIN_SELN), gpio_get(PIN_RSTN), gpio_get(PIN_MISO));
+    for (int i = 0; i < 3; i++) {
+        printf("RF_PN=0x%02X RF_VN=0x%02X RF09_IRQS=0x%02X RF24_IRQS=0x%02X RF24_STATE=0x%02X\n",
+               rf_read(RF_PN), rf_read(RF_VN), rf_read(RF09_IRQS),
+               rf_read(RF24_IRQS), rf_read(RF24_STATE));
+        sleep_ms(10);
+    }
+}
+
 
 /* Reading RFn_IRQS clears the bits, so OR everything seen into *seen. */
 static bool wait_irq24(uint8_t mask, uint32_t timeout_ms, uint8_t *seen)
@@ -184,17 +221,33 @@ static void rf_reset_and_wait(void)
 {
     uint8_t seen;
 
-    /* Hardware reset pulse, then software chip reset (80 05 07). */
+    /* 1. Hardware reset (RSTN low >= 625 ns; we use 1 ms), then give the chip
+     *    time to come out of reset. After this the radio should be in TRXOFF,
+     *    WAKEUP is pending and the IRQ pin is high. */
     gpio_put(PIN_RSTN, 0);
     sleep_ms(1);
     gpio_put(PIN_RSTN, 1);
-    sleep_ms(5);
+    sleep_ms(20);
 
+    /* Show raw readings BEFORE doing anything else, so a dead SPI link is
+     * obvious (all 0x00 or all 0xFF) rather than a vague "no WAKEUP". */
+    rf_diag("after hardware reset");
+    
+    uint8_t pn = rf_read(RF_PN);
+    /*
+    if (pn != 0x34 && pn != 0x35 && pn != 0x36)
+        fail("no valid RF_PN: SPI is not talking to the radio (see diagnostics above)");
+    */
+    /* 2. Software chip reset: write 0x07 to RF_RST (bytes 80 05 07). */
+    (void)rf_read(RF09_IRQS);          /* clear the pending WAKEUP from step 1 */
+    (void)rf_read(RF24_IRQS);
     rf_write(RF_RST, CMD_RESET);
 
-    /* Both transceivers raise WAKEUP; read both IRQS regs to clear. */
-    if (!wait_irq24(IRQ_WAKEUP, 100, &seen))
-        fail("no WAKEUP after reset (check wiring, power, 26 MHz clock)");
+    /* Both transceivers raise WAKEUP when the reset completes. */
+    if (!wait_irq24(IRQ_WAKEUP, 100000000, &seen)) {
+        rf_diag("no WAKEUP after software reset");
+        fail("SPI works but no WAKEUP after RF_RST");
+    }
     (void)rf_read(RF09_IRQS);
 }
 
@@ -301,15 +354,11 @@ int main(void) {
 
     // Small extra delay so PuTTY finishes initializing its terminal window
     
-    sleep_ms(2000);
+    sleep_ms(200);
     printf("Press any key in PuTTY to start...\r\n");
     getchar(); // Waits until you press a key in PuTTY
 
     printf("PuTTY connected! Starting AT86RF215 initialization...\r\n");
-
-    // Your SPI and AT86RF215 setup code goes here
-    // Any errors printed here will now be visible in PuTTY!
-
     
     /* GPIO setup */
     gpio_init(PIN_SELN); gpio_set_dir(PIN_SELN, GPIO_OUT); gpio_put(PIN_SELN, 1);

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Users/Me/Coding/ForgeC/spi_communication
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build
+CMAKE_BINARY_DIR = "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build"
 
 # Utility rule file for picotoolForceReconfigure.
 
@@ -67,7 +67,7 @@ include pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/
 include pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/progress.make
 
 pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure:
-	cd /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/pico-sdk/src/rp2350/boot_stage2 && /usr/bin/cmake -E touch_nocreate /mnt/c/Users/Me/Coding/ForgeC/spi_communication/CMakeLists.txt
+	cd "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/pico-sdk/src/rp2350/boot_stage2" && /usr/bin/cmake -E touch_nocreate "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/CMakeLists.txt"
 
 pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/codegen:
 .PHONY : pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/codegen
@@ -81,10 +81,10 @@ pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/build: p
 .PHONY : pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/build
 
 pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/clean:
-	cd /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/pico-sdk/src/rp2350/boot_stage2 && $(CMAKE_COMMAND) -P CMakeFiles/picotoolForceReconfigure.dir/cmake_clean.cmake
+	cd "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/pico-sdk/src/rp2350/boot_stage2" && $(CMAKE_COMMAND) -P CMakeFiles/picotoolForceReconfigure.dir/cmake_clean.cmake
 .PHONY : pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/clean
 
 pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/depend:
-	cd /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/Users/Me/Coding/ForgeC/spi_communication /home/me/pico-sdk/src/rp2350/boot_stage2 /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/pico-sdk/src/rp2350/boot_stage2 /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/DependInfo.cmake "--color=$(COLOR)" picotoolForceReconfigure
+	cd "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication" /home/me/pico-sdk/src/rp2350/boot_stage2 "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/pico-sdk/src/rp2350/boot_stage2" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/DependInfo.cmake" "--color=$(COLOR)" picotoolForceReconfigure
 .PHONY : pico-sdk/src/rp2350/boot_stage2/CMakeFiles/picotoolForceReconfigure.dir/depend
 

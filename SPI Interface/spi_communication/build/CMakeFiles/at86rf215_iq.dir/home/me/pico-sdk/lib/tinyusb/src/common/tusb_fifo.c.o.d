@@ -27,9 +27,9 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.
  /home/me/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
  /home/me/pico-sdk/src/common/pico_base_headers/include/pico/assert.h \
  /usr/include/newlib/assert.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/generated/pico_base/pico/version.h \
  /home/me/pico-sdk/src/common/pico_base_headers/include/pico/config.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h \
  /home/me/pico-ice-sdk/include/boards/pico2_ice.h \
  /home/me/pico-ice-sdk/include/boards/ice40up5k.h \
  /home/me/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \

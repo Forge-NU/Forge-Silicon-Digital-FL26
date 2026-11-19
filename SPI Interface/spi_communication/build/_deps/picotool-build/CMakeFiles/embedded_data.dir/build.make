@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src
+CMAKE_SOURCE_DIR = "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-src"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build
+CMAKE_BINARY_DIR = "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-build"
 
 # Utility rule file for embedded_data.
 
@@ -67,10 +67,10 @@ CMakeFiles/embedded_data: xip_ram_perms_elf.h
 CMakeFiles/embedded_data: flash_id_bin.h
 
 flash_id_bin.h: flash_id
-	/usr/bin/cmake -D BINARY_FILE= -D OUTPUT_NAME=flash_id_bin -P /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/cmake/binh.cmake
+	/usr/bin/cmake -D BINARY_FILE= -D OUTPUT_NAME=flash_id_bin -P "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-src/cmake/binh.cmake"
 
-xip_ram_perms_elf.h: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/xip_ram_perms
-	/usr/bin/cmake -D BINARY_FILE= -D OUTPUT_NAME=xip_ram_perms_elf -P /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/cmake/binh.cmake
+xip_ram_perms_elf.h: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/xip_ram_perms
+	/usr/bin/cmake -D BINARY_FILE= -D OUTPUT_NAME=xip_ram_perms_elf -P "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-src/cmake/binh.cmake"
 
 CMakeFiles/embedded_data.dir/codegen:
 .PHONY : CMakeFiles/embedded_data.dir/codegen
@@ -90,6 +90,6 @@ CMakeFiles/embedded_data.dir/clean:
 .PHONY : CMakeFiles/embedded_data.dir/clean
 
 CMakeFiles/embedded_data.dir/depend:
-	cd /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build/CMakeFiles/embedded_data.dir/DependInfo.cmake "--color=$(COLOR)" embedded_data
+	cd "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-src" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-src" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-build" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-build" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-build/CMakeFiles/embedded_data.dir/DependInfo.cmake" "--color=$(COLOR)" embedded_data
 .PHONY : CMakeFiles/embedded_data.dir/depend
 

@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-subbuild
+# Install script for directory: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-subbuild
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,7 +40,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-subbuild/install_local_manifest.txt"
+  file(WRITE "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-subbuild/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -56,6 +56,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-subbuild/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-subbuild/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

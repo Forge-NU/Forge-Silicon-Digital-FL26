@@ -1,5 +1,5 @@
 errors/CMakeFiles/errors.dir/errors.cpp.o: \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/errors/errors.cpp \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/errors/errors.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/15/cstdarg \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
@@ -12,7 +12,7 @@ errors/CMakeFiles/errors.dir/errors.cpp.o: \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/cpu_defines.h \
  /usr/lib/gcc/x86_64-linux-gnu/15/include/stdarg.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/errors/errors.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/errors/errors.h \
  /usr/include/c++/15/string /usr/include/c++/15/bits/requires_hosted.h \
  /usr/include/c++/15/bits/stringfwd.h \
  /usr/include/c++/15/bits/memoryfwd.h \

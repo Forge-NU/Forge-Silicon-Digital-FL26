@@ -1,7 +1,7 @@
 CMakeFiles/picotool.dir/lib/whereami/whereami.c.o: \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c \
  /usr/include/stdc-predef.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.h \
  /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

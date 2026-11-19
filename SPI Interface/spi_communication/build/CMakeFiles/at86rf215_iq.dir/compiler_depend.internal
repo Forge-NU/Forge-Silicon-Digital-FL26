@@ -25,8 +25,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/audio/audio_d
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -91,8 +91,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/cdc/cdc_devic
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -143,8 +143,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/dfu/dfu_devic
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -183,8 +183,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_de
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -223,8 +223,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/hid/hid_devic
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -263,8 +263,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/midi/midi_dev
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -303,8 +303,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/msc/msc_devic
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -343,8 +343,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -383,8 +383,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/net/ncm_devic
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -423,8 +423,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -463,8 +463,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/vendor/vendor
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -503,8 +503,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/class/video/video_d
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -564,8 +564,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -644,8 +644,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/device/usbd.c.o
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -724,8 +724,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/device/usbd_control
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -812,8 +812,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/portable/raspberryp
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -889,8 +889,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/portable/raspberryp
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/alloca.h
@@ -971,8 +971,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/lib/tinyusb/src/tusb.c.o
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1023,8 +1023,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/hardware_claim/claim.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1068,8 +1068,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_sync/critical_secti
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1112,8 +1112,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_sync/lock_core.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1159,8 +1159,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_sync/mutex.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1204,8 +1204,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_sync/sem.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1262,8 +1262,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_time/time.c.o
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
  /home/me/pico-sdk/src/rp2_common/pico_time_adapter/include/pico/time_adapter.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/alloca.h
@@ -1311,8 +1311,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_time/timeout_helper
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1345,8 +1345,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_util/datetime.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1400,8 +1400,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_util/fixed_bitset.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1434,8 +1434,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_util/pheap.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/alloca.h
@@ -1489,8 +1489,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/common/pico_util/queue.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/alloca.h
@@ -1537,8 +1537,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2350/pico_platform/platform.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1580,8 +1580,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_boot_lock/b
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1639,8 +1639,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_clocks/cloc
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1673,8 +1673,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_divider/div
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1726,8 +1726,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_flash/flash
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1788,8 +1788,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_gpio/gpio.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1843,8 +1843,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_irq/irq.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1889,8 +1889,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_pll/pll.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1936,8 +1936,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_spi/spi.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -1975,8 +1975,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_sync/sync.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2021,8 +2021,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_sync_spin_l
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2060,8 +2060,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_ticks/ticks
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2110,8 +2110,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_timer/timer
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2161,8 +2161,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_uart/uart.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2200,8 +2200,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_vreg/vreg.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2254,8 +2254,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_watchdog/wa
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2306,8 +2306,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_xip_cache/x
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2349,8 +2349,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/hardware_xosc/xosc.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2398,8 +2398,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_atomic/atomic.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2449,8 +2449,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_bootrom/bootrom
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2503,8 +2503,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_bootrom/bootrom
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2537,8 +2537,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_clib_interface/
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2582,8 +2582,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_clib_interface/
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2644,8 +2644,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_cxx_options/new
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/alloca.h
@@ -2694,8 +2694,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_divider/divider
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2728,8 +2728,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_double/double_m
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2766,8 +2766,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2810,8 +2810,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_flash/flash.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2844,8 +2844,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_float/float_mat
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2884,8 +2884,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_malloc/malloc.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/alloca.h
@@ -2928,8 +2928,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_platform_common
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -2962,8 +2962,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_platform_panic/
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_printf/include/pico/printf.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3017,8 +3017,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_printf/printf.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_printf/include/pico/printf.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3060,8 +3060,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_runtime/runtime
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3130,8 +3130,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_runtime_init/ru
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3196,8 +3196,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_runtime_init/ru
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3230,8 +3230,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_runtime_init/ru
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3268,8 +3268,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_standard_binary
  /home/me/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3317,8 +3317,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio/driver.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3406,8 +3406,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_stdio_usb/stdio
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio/driver.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3490,8 +3490,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_stdio_usb/stdio
  /home/me/pico-sdk/src/rp2_common/pico_usb_reset/include/pico/usb_reset.h
  /home/me/pico-sdk/src/rp2_common/pico_usb_reset/include/pico/usb_reset_config.h
  /home/me/pico-sdk/src/rp2_common/pico_usb_reset/include/pico/usb_reset_tusb.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3573,8 +3573,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3616,8 +3616,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_thread_local/th
  /home/me/pico-sdk/src/rp2_common/pico_runtime_init/include/pico/runtime_init.h
  /home/me/pico-sdk/src/rp2_common/pico_thread_local/include/pico/thread_local.h
  /home/me/pico-sdk/src/rp2_common/pico_thread_local/include/picotls.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/alloca.h
@@ -3675,8 +3675,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_unique_id/uniqu
  /home/me/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_unique_id/include/pico/unique_id.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3764,8 +3764,8 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_usb_reset/usb_r
  /home/me/pico-sdk/src/rp2_common/pico_usb_reset/include/pico/usb_reset.h
  /home/me/pico-sdk/src/rp2_common/pico_usb_reset/include/pico/usb_reset_config.h
  /home/me/pico-sdk/src/rp2_common/pico_usb_reset/include/pico/usb_reset_tusb.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h
@@ -3793,7 +3793,7 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_usb_reset/usb_r
  /usr/lib/gcc/arm-none-eabi/14.2.1/include/stdint.h
 
 CMakeFiles/at86rf215_iq.dir/main.c.o
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/main.c
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/main.c
  /home/me/pico-ice-sdk/include/boards/ice40up5k.h
  /home/me/pico-ice-sdk/include/boards/pico2_ice.h
  /home/me/pico-sdk/src/common/pico_base_headers/include/pico.h
@@ -3846,8 +3846,8 @@ CMakeFiles/at86rf215_iq.dir/main.c.o
  /home/me/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  /home/me/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/config_autogen.h
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/generated/pico_base/pico/version.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/config_autogen.h
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/generated/pico_base/pico/version.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/_newlib_version.h
  /usr/include/newlib/assert.h

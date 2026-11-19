@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_ASM
-  "/home/me/pico-sdk/src/rp2350/boot_stage2/compile_time_choice.S" "/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.o"
+  "/home/me/pico-sdk/src/rp2350/boot_stage2/compile_time_choice.S" "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.o"
   )
 set(CMAKE_ASM_COMPILER_ID "GNU")
 

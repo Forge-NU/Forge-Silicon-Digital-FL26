@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/errors
+CXX_INCLUDES = -I"/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/_deps/picotool-src/errors"
 
 CXX_FLAGS = -O3 -DNDEBUG -std=gnu++14
 

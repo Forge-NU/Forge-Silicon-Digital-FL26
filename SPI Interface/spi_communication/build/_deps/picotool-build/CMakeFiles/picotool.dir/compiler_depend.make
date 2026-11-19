@@ -149,12 +149,12 @@ CMakeFiles/picotool.dir/data_locs.cpp.o: data_locs.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h
 
-CMakeFiles/picotool.dir/get_enc_bootloader.cpp.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/get_enc_bootloader.cpp \
+CMakeFiles/picotool.dir/get_enc_bootloader.cpp.o: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/get_enc_bootloader.cpp \
   enc_bootloader_elf.h \
   enc_bootloader_mbedtls_elf.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/data_locs.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/get_enc_bootloader.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/data_locs.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/get_enc_bootloader.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -390,9 +390,9 @@ CMakeFiles/picotool.dir/get_enc_bootloader.cpp.o: /mnt/c/Users/Me/Coding/ForgeC/
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h
 
-CMakeFiles/picotool.dir/lib/whereami/whereami++.cpp.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.cpp \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c \
+CMakeFiles/picotool.dir/lib/whereami/whereami++.cpp.o: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.cpp \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -604,8 +604,8 @@ CMakeFiles/picotool.dir/lib/whereami/whereami++.cpp.o: /mnt/c/Users/Me/Coding/Fo
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h
 
-CMakeFiles/picotool.dir/lib/whereami/whereami.c.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.h \
+CMakeFiles/picotool.dir/lib/whereami/whereami.c.o: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.h \
   /usr/include/alloca.h \
   /usr/include/endian.h \
   /usr/include/features-time64.h \
@@ -683,7 +683,7 @@ CMakeFiles/picotool.dir/lib/whereami/whereami.c.o: /mnt/c/Users/Me/Coding/ForgeC
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h
 
-CMakeFiles/picotool.dir/main.cpp.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/main.cpp \
+CMakeFiles/picotool.dir/main.cpp.o: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/main.cpp \
   /home/me/pico-sdk/lib/mbedtls/include/mbedtls/aes.h \
   /home/me/pico-sdk/lib/mbedtls/include/mbedtls/bignum.h \
   /home/me/pico-sdk/lib/mbedtls/include/mbedtls/build_info.h \
@@ -718,22 +718,22 @@ CMakeFiles/picotool.dir/main.cpp.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communicat
   model/rp2350_a2_rom_end.h \
   model/rp2350_a3_rom_end.h \
   model/rp2350_a4_rom_end.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/bintool.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/mbedtls_wrapper.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/metadata.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/cli.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/clipp/clipp.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf/elf.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf/elf_file.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf2uf2/elf2uf2.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/errors/errors.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/get_enc_bootloader.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/include/picotool_mbedtls_config.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/nlohmann_json/single_include/nlohmann/json.hpp \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/model/addresses.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/model/model.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/otp.h \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/picoboot_connection/picoboot_connection.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/bintool.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/mbedtls_wrapper.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/metadata.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/cli.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/clipp/clipp.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf/elf.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf/elf_file.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf2uf2/elf2uf2.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/errors/errors.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/get_enc_bootloader.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/include/picotool_mbedtls_config.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/nlohmann_json/single_include/nlohmann/json.hpp \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/model/addresses.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/model/model.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/otp.h \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/picoboot_connection/picoboot_connection.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -1126,9 +1126,9 @@ CMakeFiles/picotool.dir/main.cpp.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communicat
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h \
   /usr/lib/gcc/x86_64-linux-gnu/15/include/syslimits.h
 
-CMakeFiles/picotool.dir/no_otp.cpp.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/no_otp.cpp \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/nlohmann_json/single_include/nlohmann/json.hpp \
-  /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/otp.h \
+CMakeFiles/picotool.dir/no_otp.cpp.o: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/no_otp.cpp \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/nlohmann_json/single_include/nlohmann/json.hpp \
+  /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/otp.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -1501,11 +1501,11 @@ errors/liberrors.a:
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
+/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
+
 /usr/include/x86_64-linux-gnu/bits/signal_ext.h:
 
 /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
 
 bintool/libbintool.a:
 
@@ -1514,8 +1514,6 @@ bintool/libbintool.a:
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
@@ -1553,9 +1551,15 @@ bintool/libbintool.a:
 
 /usr/include/c++/15/unordered_map:
 
+/usr/include/x86_64-linux-gnu/c++/15/bits/opt_random.h:
+
+/usr/include/c++/15/set:
+
 /usr/include/c++/15/regex:
 
 /usr/include/c++/15/map:
+
+/usr/include/c++/15/locale:
 
 /usr/include/c++/15/iterator:
 
@@ -1613,6 +1617,8 @@ bintool/libbintool.a:
 
 /usr/include/c++/15/bits/regex_compiler.h:
 
+/usr/include/c++/15/bits/regex_automaton.tcc:
+
 /usr/include/c++/15/bits/regex_automaton.h:
 
 /usr/include/c++/15/bits/regex.tcc:
@@ -1637,6 +1643,10 @@ CMakeFiles/picotool.dir/main.cpp.o:
 
 /usr/include/c++/15/bits/hashtable.h:
 
+/usr/include/c++/15/bits/stl_tree.h:
+
+/usr/include/c++/15/bits/enable_special_members.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/15/libgcc.a:
 
 /usr/include/x86_64-linux-gnu/bits/sigcontext.h:
@@ -1645,31 +1655,25 @@ CMakeFiles/picotool.dir/main.cpp.o:
 
 /usr/include/asm-generic/ioctls.h:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/picoboot_connection/picoboot_connection.h:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/nlohmann_json/single_include/nlohmann/json.hpp:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/model/model.h:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/errors/errors.h:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf/elf_file.h:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf/elf.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/clipp/clipp.h:
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/model/addresses.h:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/metadata.h:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/no_otp.cpp:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/mbedtls_wrapper.h:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/include/picotool_mbedtls_config.h:
-
-/usr/include/c++/15/bits/regex_automaton.tcc:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf/elf.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/clipp/clipp.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/cli.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/metadata.h:
-
-/usr/include/c++/15/locale:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/mbedtls_wrapper.h:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/bintool.h:
 
 model/rp2350_a3_rom_end.h:
 
@@ -1697,15 +1701,11 @@ model/rp2350_a2_rom_end.h:
 
 /home/me/pico-sdk/lib/mbedtls/include/mbedtls/version.h:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/errors/errors.h:
-
 /home/me/pico-sdk/lib/mbedtls/include/mbedtls/sha256.h:
 
 /home/me/pico-sdk/lib/mbedtls/include/mbedtls/private_access.h:
 
 /home/me/pico-sdk/lib/mbedtls/include/mbedtls/platform_util.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/nlohmann_json/single_include/nlohmann/json.hpp:
 
 /home/me/pico-sdk/lib/mbedtls/include/mbedtls/md.h:
 
@@ -1731,15 +1731,17 @@ model/rp2350_a2_rom_end.h:
 
 /home/me/pico-sdk/lib/mbedtls/include/mbedtls/bignum.h:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/main.cpp:
+/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/main.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-least.h:
 
 /usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf2uf2/elf2uf2.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/no_otp.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
@@ -1767,7 +1769,7 @@ model/rp2350_a2_rom_end.h:
 
 /usr/include/c++/15/bits/forward_list.tcc:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/bintool.h:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/model/model.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
@@ -1800,12 +1802,6 @@ model/rp2350_a2_rom_end.h:
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/locale.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/data_locs.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/get_enc_bootloader.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
@@ -1875,11 +1871,11 @@ model/libmodel.a:
 
 /usr/include/stdio.h:
 
-/usr/include/features-time64.h:
-
 /usr/include/c++/15/bits/uniform_int_dist.h:
 
 /usr/include/c++/15/cstddef:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf2uf2/elf2uf2.h:
 
 /usr/include/errno.h:
 
@@ -1959,8 +1955,6 @@ model/rp2350_a4_rom_end.h:
 
 /usr/include/c++/15/bits/locale_classes.tcc:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c:
-
 /usr/include/c++/15/bits/functional_hash.h:
 
 /usr/include/c++/15/ext/type_traits.h:
@@ -2017,11 +2011,19 @@ model/rp2350_a4_rom_end.h:
 
 /usr/include/c++/15/bits/random.tcc:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf/elf_file.h:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/cli.h:
 
 /usr/include/ctype.h:
 
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/model/addresses.h:
+
 /usr/include/c++/15/bits/locale_facets.tcc:
+
+/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o:
+
+/usr/include/x86_64-linux-gnu/bits/ioctl-types.h:
+
+/usr/include/c++/15/bits/range_access.h:
 
 /usr/include/x86_64-linux-gnu/c++/15/bits/time_members.h:
 
@@ -2030,8 +2032,6 @@ model/rp2350_a4_rom_end.h:
 /usr/include/c++/15/bits/hash_bytes.h:
 
 /usr/include/c++/15/algorithm:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/otp.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/15/include/stdbool.h:
 
@@ -2043,9 +2043,13 @@ model/rp2350_a4_rom_end.h:
 
 /usr/include/c++/15/bits/cpp_type_traits.h:
 
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/get_enc_bootloader.cpp:
+
 /usr/include/c++/15/streambuf:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/otp.h:
 
 data_locs.cpp:
 
@@ -2079,6 +2083,10 @@ enc_bootloader_mbedtls_elf.h:
 
 /usr/include/c++/15/clocale:
 
+/usr/include/features-time64.h:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.cpp:
+
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 CMakeFiles/picotool.dir/get_enc_bootloader.cpp.o:
@@ -2092,12 +2100,6 @@ CMakeFiles/picotool.dir/get_enc_bootloader.cpp.o:
 /usr/include/c++/15/bit:
 
 /usr/include/c++/15/bits/allocator.h:
-
-/usr/include/x86_64-linux-gnu/c++/15/bits/opt_random.h:
-
-/usr/include/c++/15/set:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.cpp:
 
 /usr/lib/x86_64-linux-gnu/libmvec.so.1:
 
@@ -2173,6 +2175,8 @@ CMakeFiles/picotool.dir/no_otp.cpp.o:
 
 /home/me/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h:
 
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/get_enc_bootloader.h:
+
 /usr/include/x86_64-linux-gnu/c++/15/bits/c++locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
@@ -2199,21 +2203,15 @@ CMakeFiles/picotool.dir/no_otp.cpp.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h:
 
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/picoboot_connection/picoboot_connection.h:
+
 /usr/include/c++/15/bits/cxxabi_init_exception.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o:
-
-/usr/include/x86_64-linux-gnu/bits/ioctl-types.h:
-
-/usr/include/c++/15/bits/range_access.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/get_enc_bootloader.cpp:
 
 CMakeFiles/picotool.dir/lib/whereami/whereami++.cpp.o:
 
 enc_bootloader_elf.h:
 
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.h:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.h:
 
 /usr/include/c++/15/bits/regex.h:
 
@@ -2224,6 +2222,8 @@ enc_bootloader_elf.h:
 /usr/include/asm-generic/bitsperlong.h:
 
 elf2uf2/libelf2uf2.a:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/include/picotool_mbedtls_config.h:
 
 /usr/include/c++/15/bits/algorithmfwd.h:
 
@@ -2250,6 +2250,8 @@ elf2uf2/libelf2uf2.a:
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
 /usr/include/x86_64-linux-gnu/bits/signum-generic.h:
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c:
 
 /usr/include/c++/15/bits/memoryfwd.h:
 
@@ -2357,6 +2359,8 @@ elf2uf2/libelf2uf2.a:
 
 /usr/include/c++/15/bits/locale_classes.h:
 
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/data_locs.h:
+
 /usr/include/linux/stddef.h:
 
 /usr/include/wctype.h:
@@ -2372,8 +2376,6 @@ elf2uf2/libelf2uf2.a:
 /usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
-
-/usr/include/x86_64-linux-gnu/bits/sched.h:
 
 /usr/include/x86_64-linux-gnu/c++/15/bits/ctype_base.h:
 
@@ -2415,8 +2417,6 @@ elf2uf2/libelf2uf2.a:
 
 /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h:
 
-/usr/include/c++/15/bits/stl_tree.h:
+/usr/include/x86_64-linux-gnu/bits/sched.h:
 
-/usr/include/c++/15/bits/enable_special_members.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.h:
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.h:

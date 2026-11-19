@@ -1,4 +1,4 @@
-// Padded version of: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/pico-sdk/src/rp2350/boot_stage2/bs2_default.bin
+// Padded version of: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/build/pico-sdk/src/rp2350/boot_stage2/bs2_default.bin
 
 .section .boot2, "ax"
 

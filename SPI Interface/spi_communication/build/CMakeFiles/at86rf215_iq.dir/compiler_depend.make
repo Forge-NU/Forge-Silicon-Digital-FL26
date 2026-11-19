@@ -3718,7 +3718,7 @@ CMakeFiles/at86rf215_iq.dir/home/me/pico-sdk/src/rp2_common/pico_usb_reset/usb_r
   /usr/lib/gcc/arm-none-eabi/14.2.1/include/stddef.h \
   /usr/lib/gcc/arm-none-eabi/14.2.1/include/stdint.h
 
-CMakeFiles/at86rf215_iq.dir/main.c.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communication/main.c \
+CMakeFiles/at86rf215_iq.dir/main.c.o: /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/main.c \
   /home/me/pico-ice-sdk/include/boards/ice40up5k.h \
   /home/me/pico-ice-sdk/include/boards/pico2_ice.h \
   /home/me/pico-sdk/src/common/pico_base_headers/include/pico.h \
@@ -3793,6 +3793,8 @@ CMakeFiles/at86rf215_iq.dir/main.c.o: /mnt/c/Users/Me/Coding/ForgeC/spi_communic
   /usr/lib/gcc/arm-none-eabi/14.2.1/include/stddef.h \
   /usr/lib/gcc/arm-none-eabi/14.2.1/include/stdint.h
 
+
+/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/main.c:
 
 /home/me/pico-sdk/src/rp2_common/pico_usb_reset/usb_reset.c:
 
@@ -4085,8 +4087,6 @@ generated/pico_base/pico/version.h:
 /home/me/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c:
 
 /usr/lib/gcc/arm-none-eabi/14.2.1/include/stdbool.h:
-
-/mnt/c/Users/Me/Coding/ForgeC/spi_communication/main.c:
 
 /home/me/pico-sdk/lib/tinyusb/src/device/usbd_pvt.h:
 

@@ -144,7 +144,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/me/pico-sdk/src/rp2_common/tinyusb/CMakeLists.txt"
   "/home/me/pico-sdk/tools/CMakeLists.txt"
   "/home/me/pico-sdk/tools/Findpioasm.cmake"
-  "/mnt/c/Users/Me/Coding/ForgeC/spi_communication/CMakeLists.txt"
+  "/mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi Interface/spi_communication/CMakeLists.txt"
   "CMakeFiles/4.2.3/CMakeASMCompiler.cmake"
   "CMakeFiles/4.2.3/CMakeCCompiler.cmake"
   "CMakeFiles/4.2.3/CMakeCXXCompiler.cmake"

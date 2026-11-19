@@ -1,7 +1,7 @@
 CMakeFiles/picotool.dir/lib/whereami/whereami++.cpp.o: \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.cpp \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.cpp \
  /usr/include/stdc-predef.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami++.h \
  /usr/include/c++/15/string /usr/include/c++/15/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
@@ -165,7 +165,7 @@ CMakeFiles/picotool.dir/lib/whereami/whereami++.cpp.o: \
  /usr/include/c++/15/bits/locale_facets.tcc \
  /usr/include/c++/15/bits/basic_ios.tcc \
  /usr/include/c++/15/bits/ostream.tcc \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/whereami/whereami.c \
  /usr/include/c++/15/stdlib.h /usr/include/string.h \
  /usr/include/strings.h \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \

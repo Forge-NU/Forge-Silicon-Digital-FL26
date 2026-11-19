@@ -1,7 +1,7 @@
 CMakeFiles/picotool.dir/main.cpp.o: \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/main.cpp \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/main.cpp \
  /usr/include/stdc-predef.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/cli.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/cli.h \
  /usr/include/c++/15/algorithm /usr/include/c++/15/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
@@ -196,7 +196,7 @@ CMakeFiles/picotool.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/include/c++/15/iterator /usr/include/c++/15/bits/stream_iterator.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/clipp/clipp.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/clipp/clipp.h \
  /usr/include/c++/15/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
@@ -277,29 +277,29 @@ CMakeFiles/picotool.dir/main.cpp.o: \
  /home/me/pico-sdk/src/common/boot_uf2_headers/include/boot/uf2.h \
  /home/me/pico-sdk/src/common/boot_picobin_headers/include/boot/picobin.h \
  /usr/lib/gcc/x86_64-linux-gnu/15/include/stdbool.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/get_enc_bootloader.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/get_enc_bootloader.h \
  /usr/include/c++/15/fstream \
  /usr/include/x86_64-linux-gnu/c++/15/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++io.h \
  /usr/include/c++/15/bits/fstream.tcc \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/picoboot_connection/picoboot_connection.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/picoboot_connection/picoboot_connection.h \
  /home/me/pico-sdk/src/common/boot_picoboot_headers/include/boot/picoboot.h \
  /home/me/pico-sdk/src/host/pico_platform/include/pico/platform.h \
  /home/me/pico-sdk/src/rp2350/hardware_regs/include/hardware/platform_defs.h \
  /home/me/pico-sdk/src/common/boot_picoboot_headers/include/boot/picoboot_constants.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/model/model.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build/model/rp2350_a2_rom_end.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build/model/rp2350_a3_rom_end.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build/model/rp2350_a4_rom_end.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/model/addresses.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/errors/errors.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/bintool.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/mbedtls_wrapper.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/model/model.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-build/model/rp2350_a2_rom_end.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-build/model/rp2350_a3_rom_end.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-build/model/rp2350_a4_rom_end.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/model/addresses.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/errors/errors.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/bintool.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/mbedtls_wrapper.h \
  /usr/include/c++/15/stdlib.h \
  /home/me/pico-sdk/lib/mbedtls/include/mbedtls/sha256.h \
  /home/me/pico-sdk/lib/mbedtls/include/mbedtls/private_access.h \
  /home/me/pico-sdk/lib/mbedtls/include/mbedtls/build_info.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/include/picotool_mbedtls_config.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/include/picotool_mbedtls_config.h \
  /usr/lib/gcc/x86_64-linux-gnu/15/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/15/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -325,20 +325,20 @@ CMakeFiles/picotool.dir/main.cpp.o: \
  /home/me/pico-sdk/lib/mbedtls/include/mbedtls/entropy.h \
  /home/me/pico-sdk/lib/mbedtls/include/mbedtls/pk.h \
  /home/me/pico-sdk/lib/mbedtls/include/mbedtls/version.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf/elf_file.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf/elf.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/model/addresses.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/bintool/metadata.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf2uf2/elf2uf2.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf/elf_file.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf/elf.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/model/addresses.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/bintool/metadata.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf2uf2/elf2uf2.h \
  /home/me/pico-sdk/src/rp2_common/boot_bootrom_headers/include/boot/bootrom_constants.h \
  /home/me/pico-sdk/src/common/pico_binary_info/include/pico/binary_info.h \
  /home/me/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h \
  /home/me/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h \
  /home/me/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/code.h \
  /home/me/pico-sdk/src/common/pico_usb_reset_interface_headers/include/pico/usb_reset_interface.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/elf/elf.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/otp.h \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-src/lib/nlohmann_json/single_include/nlohmann/json.hpp \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/elf/elf.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/otp.h \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-src/lib/nlohmann_json/single_include/nlohmann/json.hpp \
  /usr/include/c++/15/cstddef /usr/include/c++/15/forward_list \
  /usr/include/c++/15/bits/forward_list.h \
  /usr/include/c++/15/bits/forward_list.tcc \

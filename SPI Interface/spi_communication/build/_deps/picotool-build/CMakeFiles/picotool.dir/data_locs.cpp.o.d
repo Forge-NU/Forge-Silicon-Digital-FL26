@@ -1,5 +1,5 @@
 CMakeFiles/picotool.dir/data_locs.cpp.o: \
- /mnt/c/Users/Me/Coding/ForgeC/spi_communication/build/_deps/picotool-build/data_locs.cpp \
+ /mnt/c/Users/Me/Coding/Forge-Silicon-Digital-FL26/Spi\ Interface/spi_communication/build/_deps/picotool-build/data_locs.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/15/vector \
  /usr/include/c++/15/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
