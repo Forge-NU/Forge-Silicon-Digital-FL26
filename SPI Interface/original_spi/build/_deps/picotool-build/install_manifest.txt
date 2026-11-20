@@ -1,0 +1,7 @@
+/mnt/c/Users/Me/Coding/ForgeC/build/_deps/picotool/picotool
+/mnt/c/Users/Me/Coding/ForgeC/build/_deps/picotool/picotoolTargets.cmake
+/mnt/c/Users/Me/Coding/ForgeC/build/_deps/picotool/picotoolTargets-release.cmake
+/mnt/c/Users/Me/Coding/ForgeC/build/_deps/picotool/picotoolConfig.cmake
+/mnt/c/Users/Me/Coding/ForgeC/build/_deps/picotool/picotoolConfigVersion.cmake
+/mnt/c/Users/Me/Coding/ForgeC/build/_deps/picotool/enc_bootloader.elf
+/mnt/c/Users/Me/Coding/ForgeC/build/_deps/picotool/enc_bootloader_mbedtls.elf

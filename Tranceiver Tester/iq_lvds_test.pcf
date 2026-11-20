@@ -1,0 +1,25 @@
+# Pin constraints for iq_lvds_test (iCE40 UP5K, SG48 package)
+#
+# !! EDIT THE PIN NUMBERS !!  I do not know which iCE40 balls your "pin 0..3"
+# map to on your pico2-ice/breakout. The numbers below are placeholders that
+# are valid SG48 I/O pins, just so the file builds. Replace each with the iCE40
+# pin that is wired to your LVDS driver, using your board's schematic/pinout.
+#
+# Signals (single-ended side of the external LVDS driver/receiver):
+#   tx_data_pin  = your "pin 0"   -> radio TXD   (FPGA output)
+#   tx_clk_pin   = your "pin 1"   -> radio TXCLK (FPGA output)
+#   rx_data_pin  = your "pin 2"   <- radio RXD24 (FPGA input)
+#   rx_clk_pin   = your "pin 3"   <- radio RXCLK (FPGA input, 64 MHz)
+#
+# Status outputs: wire to LEDs or to spare pins you can read on the Pico.
+# (On many boards the RGB LED is active low; invert in RTL if you use it.)
+
+set_io tx_data_pin  4     # EDIT
+set_io tx_clk_pin   3     # EDIT
+set_io rx_data_pin  6     # EDIT
+set_io rx_clk_pin   2     # EDIT
+
+set_io led_clk      9     # EDIT
+set_io led_lock     10    # EDIT
+set_io led_ok       11    # EDIT
+set_io led_err      12    # EDIT
