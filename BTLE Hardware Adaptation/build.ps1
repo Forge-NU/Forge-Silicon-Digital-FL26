@@ -61,6 +61,10 @@ Write-Host "== icepack"
 & icepack build/$top.asc build/$top.bin
 if ($LASTEXITCODE -ne 0) { throw "icepack failed" }
 
-Select-String -Path build/nextpnr.log -Pattern "Max frequency for clock|ICESTORM_LC:|ICESTORM_RAM:|ICESTORM_DSP:|SB_IO:" |
-    Select-Object -Last 8 | ForEach-Object { Write-Host ("   " + ($_.Line -replace '^Info: *', '')) }
+# resources (last utilisation report) and final post-route Fmax (last 3 lines; nextpnr also
+# prints a pre-route estimate earlier in the log, which can read FAIL and is not the result)
+Select-String -Path build/nextpnr.log -Pattern "ICESTORM_LC:|ICESTORM_RAM:|ICESTORM_DSP:|SB_IO:" |
+    Select-Object -Last 4 | ForEach-Object { Write-Host ("   " + ($_.Line -replace '^Info: *', '').Trim()) }
+Select-String -Path build/nextpnr.log -Pattern "Max frequency for clock" |
+    Select-Object -Last 3 | ForEach-Object { Write-Host ("   " + ($_.Line -replace '^Info: *', '')) }
 Write-Host ("== done: {0}" -f (Resolve-Path build/$top.bin))

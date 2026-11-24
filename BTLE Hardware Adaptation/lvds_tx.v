@@ -76,7 +76,11 @@ module lvds_tx #(
     // back for as long as stream_en stays high.  tx_data_active is high while the word now on
     // the wire is a data word, i.e. while a burst is running.  (Without the tx_data_active term
     // every data word reset idle_cnt and forced 10 zero words before the next one.)
-    wire        send_data = en && (tx_data_active || idle_ok);
+    // send_data is registered too: it is only used on the `last` cycle, and its inputs
+    // (tx_data_active, idle_ok) only change at word boundaries, so computing it one cycle early
+    // gives the same decision (en, which is asynchronous anyway, is sampled one cycle earlier).
+    // This keeps the 32-way shift-register load off the LUT path at 64 MHz.
+    reg         send_data;
     wire [31:0] data_word = {2'b10, i_r, ctrl_r, 2'b01, q_r, 1'b0};
     wire [31:0] nw        = send_data ? data_word : 32'd0;
 
@@ -90,9 +94,11 @@ module lvds_tx #(
             tx_data_active <= 1'b0;
             last           <= 1'b0;
             idle_ok        <= 1'b0;
+            send_data      <= 1'b0;
         end else begin
-            last    <= (wc == 4'd14);
-            idle_ok <= (idle_cnt >= MIN_IDLE_WORDS);
+            last      <= (wc == 4'd14);
+            idle_ok   <= (idle_cnt >= MIN_IDLE_WORDS);
+            send_data <= en && (tx_data_active || idle_ok);
 
             // at edge k: d_fall <= B_k = bit[30-2k],  d_rise <= A_(k+1) = bit[29-2k];
             // on the last edge A_0 of the next word comes from nw
