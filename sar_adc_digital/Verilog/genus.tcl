@@ -14,8 +14,7 @@ read_libs $liberty_typical
 # Only the .v top from this folder, never the .sv one: both define sar_adc_digital
 read_hdl $DIR/bit_timer.v
 read_hdl $DIR/sar_adc_digital.v
-set FSM_FILE $REPO/sar_adc_digital/fsm_code.sv   ;# check this path; swap for fsm_code.v once converted
-read_hdl -sv $FSM_FILE
+read_hdl $DIR/fsm_code.v
 elaborate $TOP
 check_design -unresolved
 
