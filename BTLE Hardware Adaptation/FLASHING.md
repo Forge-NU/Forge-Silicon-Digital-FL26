@@ -16,7 +16,7 @@ Output: `build\btle_mvp_pico2ice.bin`. The script prints Fmax for each clock. Al
 
 ## 2. Flash it with the loader firmware (verified on the board, 2026-11-24)
 
-`D:\Forge_Silicon\firmware\btle_fpga_loader` is RP2350 firmware with the bitstream built in. On every boot it:
+`firmware/btle_fpga_loader` (in this folder) is RP2350 firmware with the bitstream built in. On every boot it:
 1. Starts the FPGA's 12 MHz clock (GPIO21 → ICE_35_G0) and holds the FPGA in reset.
 2. Wakes the FPGA's config flash (W25Q32JV) and rewrites it **only if** it differs from the embedded bitstream, then verifies it.
 3. Lets the FPGA boot from that flash. This persists, but the RP2350 must still provide the clock.
@@ -25,7 +25,7 @@ If the flash doesn't answer, it loads the FPGA directly over SPI instead (volati
 
 1. Rebuild the loader after every new bitstream (it embeds `build\btle_mvp_pico2ice.bin`):
    ```powershell
-   cd D:\Forge_Silicon\firmware\btle_fpga_loader; $env:PATH = "C:\msys64\ucrt64\bin;$env:PATH"; cmake --build build
+   cd "D:\Forge_Silicon\Forge-Silicon-Digital-FL26\BTLE Hardware Adaptation\firmware\btle_fpga_loader"; $env:PATH = "C:\msys64\ucrt64\bin;$env:PATH"; cmake --build build
    ```
    First time only, configure before that build: `cmake -S . -B build -G Ninja -DPICO_SDK_PATH=C:/Users/marsi/pico/pico-sdk -DPICO_TOOLCHAIN_PATH=C:/Users/marsi/.mcuxpressotools/arm-gnu-toolchain-14.2.rel1-mingw-w64-x86_64-arm-none-eabi -DCMAKE_MAKE_PROGRAM=C:/Users/marsi/.mcuxpressotools/ninja-1.12.1/ninja.exe`
 2. Hold **BOOT** while plugging in USB (or, if the loader is already running, open its COM port at 1200 baud). A drive named `RP2350` appears.
