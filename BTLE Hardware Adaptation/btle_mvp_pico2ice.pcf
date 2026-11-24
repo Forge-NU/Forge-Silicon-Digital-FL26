@@ -1,50 +1,36 @@
-# btle_mvp_pico2ice.pcf  --  example pin assignment for btle_mvp_top on the pico2-ice
+# btle_mvp_pico2ice.pcf  --  pin assignment for btle_mvp_pico2ice (wrapper around btle_mvp_top)
 #
-# Pin numbers are iCE40UP5K SG48 package pins.  On the pico2-ice pinout image, "ICEnn" is pin nn.
+# Board: pico2-ice (iCE40UP5K-SG48) -> SN65LVDS049 -> ATREB215-XPRO (AT86RF215, I/Q mode, 2.4 GHz)
+# Pin numbers are SG48 package pins (= the ICE_nn net number on the pico2-ice schematic).
+# Wiring and the reasons behind each choice: hw/radio_interface_pinout.md (same pins as hw/radio_if.pcf).
 #
-# WHAT IS VERIFIED
-#   * The global-clock input pins of the SG48 package are 20, 35, 37 and 44 (Lattice answer
-#     database, "iCE40UP external clock pins").  All four appear on your pinout image.
-#   * The pinout image shows ICE20 on the right-hand RP-ICE PMOD, which is on the 3V3 rail, and
-#     shows PMOD B (left, top) on 3V3 as well.  PMOD A (left, bottom) is labelled VIO2, a separate
-#     bank supply.
-# WHAT IS NOT VERIFIED
-#   * Which pin the RP2350 drives the FPGA clock into (35 here, as on the original pico-ice).
-#   * Every assignment marked SUGGESTED.  I only had the pinout picture, not the schematic.
-#
-# RULES BEHIND THE CHOICES
-#   * rxclk_in must be on a global-clock pin: 20 (G3), 37 (G1) or 44 (G6).  Pin 35 (G0) is used
-#     by the board's clock input, and 44 sits on the VIO2 bank (see below).  Pin 20 also goes
-#     to RP2350 GPIO22 on the RP-ICE PMOD, so that RP pin must stay an input.
-#   * All eight LVDS-side and radio-side signals below go to 3.3 V pins.  The SN65LVDS049 needs
-#     a driver-input high of at least 2 V and its receiver outputs swing to 3.3 V; a bank
-#     powered below 3.3 V would break both.  If you use PMOD A, set VIO2 to 3.3 V first.
-#   * nextpnr-ice40 promotes a clock net that comes from a pin to a global buffer by itself;
-#     bb_clkgen.v adds an explicit SB_GB for bb_clk when ICE40 is defined.
-#
-# Build (example):  yosys -p "read_verilog -DICE40 ..." ; nextpnr-ice40 --up5k --package sg48
-#                   --pcf btle_mvp_pico2ice.pcf --freq 12 ; and constrain rxclk_in to 64 MHz.
+# All signals below are on 3.3 V banks: J2 Bank 0 PMOD (fixed 3.3 V) and J2 Bank 2 PMOD
+# (VIO_BANK_2 = 3.3 V while SJ5 is closed).  The SN65LVDS049 needs >= 2 V driver-input highs and its
+# receiver outputs swing to 3.3 V, so a bank below 3.3 V would break the link.
 
 # --- clocks
-set_io clk_local   35     # ASSUMED: RP2350-driven FPGA clock (G0).  Match CFG_CLK_LOCAL_HZ.
-set_io rxclk_in    20     # RXCLK from the SN65LVDS049 ROUT1, 64 MHz, G3, 3V3 RP-ICE PMOD
+set_io clk_local   35     # ICE_35_G0 <- RP2350 GPIO21 CLK_GPOUT0, 12 MHz (radio_cli fpga_init)
+set_io rxclk_in    44     # J2-31 ICE_44_G6 <- SN65LVDS049 ROUT1 (pin 15) <- RXCLK, 64 MHz DDR
 
-# --- I/Q link through the SN65LVDS049, all on PMOD B (3V3)       SUGGESTED
-set_io rxd_in      31     # ROUT2  (RXD24)
-set_io txd_out     32     # DIN2   (TXD)
-set_io txclk_out   34     # DIN1   (TXCLK)
+# --- I/Q link through the SN65LVDS049 (J2 Bank 2 PMOD, 3.3 V with SJ5 closed)
+set_io rxd_in      46     # J2-29 <- ROUT2 (pin 14) <- RXDP24/N
+set_io txclk_out   48     # J2-27 -> DIN1  (pin 10) -> TXCLKP/N
+set_io txd_out     47     # J2-28 -> DIN2  (pin 11) -> TXDP/N
 
-# --- radio SPI and reset to the XPRO J100 header                 SUGGESTED
-set_io rf_rstn     28     # J100 pin 7 (RESET)
-set_io rf_seln     36     # J100 pin 15 (SPI_SS_A)
-set_io rf_mosi     38     # J100 pin 16
-set_io rf_miso     42     # J100 pin 17
-set_io rf_sclk     43     # J100 pin 18
+# --- radio SPI / control to ATREB215-XPRO J100 (J2 Bank 0 PMOD, 3.3 V)
+set_io rf_sclk     28     # J2-9  -> J100-18 SPI_SCK
+set_io rf_mosi     32     # J2-11 -> J100-16 SPI_MOSI
+set_io -pullup yes rf_miso 36   # J2-13 <- J100-17 SPI_MISO (radio tri-states MISO while SELN is high)
+set_io rf_seln     42     # J2-15 -> J100-15 SPI_SS_A (active low)
+set_io rf_irq      31     # J2-10 <- J100-9  IRQ (active high, RF_CFG.IRQP = 0)
+set_io rf_rstn     34     # J2-12 -> J100-7  RESET (active low); only matters if that wire is fitted
 
-# --- debug outputs: choose free 3V3 pins, or the board's own LEDs and UART from the schematic
-# set_io uart_txd    <pin>
-# set_io led_ready   <pin>
-# set_io led_fault   <pin>
-# set_io led_rx_ok   <pin>
-# set_io led_tx      <pin>
-# set_io rst_ext     <pin>    # or tie rst_ext low in the top level wrapper
+# --- debug outputs on the free 3.3 V pins (all active high, push-pull)
+#   Probe with a scope / logic analyser, or drive an LED through ~330 ohm to GND.
+#   uart_txd: 115200 8N1, received packets.  Connect to a 3.3 V USB-serial adapter's RX + GND.
+set_io led_ready   38     # J2-14  radio configured, RX/TX loop running
+set_io led_fault   43     # J2-16  a check failed (part number, state poll, TX timeout); auto-retries
+set_io uart_txd    45     # J2-30  packet dump, 115200 8N1
+set_io led_rx_ok   2      # J2-32  stretched pulse: packet with good CRC received
+set_io led_tx      3      # J2-33  stretched pulse: packet transmitted
+set_io dbg_rx_lock 4      # J2-34  LVDS RX word framing locked (RXD24 decoding); high whenever the radio is in RX

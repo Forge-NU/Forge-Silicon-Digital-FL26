@@ -64,10 +64,19 @@ module lvds_tx #(
     reg [31:0] sh;
     reg        d_rise;
     reg        d_fall;
-    reg [7:0]  idle_cnt;     // zero words sent since the last data word, saturating
+    reg [7:0]  idle_cnt;     // zero words sent since the last data word, saturates at MIN_IDLE_WORDS
+    reg        last;         // registered (wc == 15): high on the last cycle of each word
+    reg        idle_ok;      // registered (idle_cnt >= MIN_IDLE_WORDS)
 
-    wire        last      = (wc == 4'd15);
-    wire        send_data = en && (idle_cnt >= MIN_IDLE_WORDS);
+    // last and idle_ok are precomputed one cycle early (idle_cnt only changes on `last`, 16
+    // cycles apart), which keeps the word-boundary decision to one LUT level so the 64 MHz
+    // rxclk domain closes on the iCE40UP5K.
+    //
+    // A burst may start only after MIN_IDLE_WORDS zero words; once started it continues back to
+    // back for as long as stream_en stays high.  tx_data_active is high while the word now on
+    // the wire is a data word, i.e. while a burst is running.  (Without the tx_data_active term
+    // every data word reset idle_cnt and forced 10 zero words before the next one.)
+    wire        send_data = en && (tx_data_active || idle_ok);
     wire [31:0] data_word = {2'b10, i_r, ctrl_r, 2'b01, q_r, 1'b0};
     wire [31:0] nw        = send_data ? data_word : 32'd0;
 
@@ -79,7 +88,12 @@ module lvds_tx #(
             d_fall         <= 1'b0;
             idle_cnt       <= 8'd0;
             tx_data_active <= 1'b0;
+            last           <= 1'b0;
+            idle_ok        <= 1'b0;
         end else begin
+            last    <= (wc == 4'd14);
+            idle_ok <= (idle_cnt >= MIN_IDLE_WORDS);
+
             // at edge k: d_fall <= B_k = bit[30-2k],  d_rise <= A_(k+1) = bit[29-2k];
             // on the last edge A_0 of the next word comes from nw
             d_fall <= sh[31] ^ INVERT[0];
@@ -89,8 +103,8 @@ module lvds_tx #(
 
             if (last) begin
                 tx_data_active <= send_data;
-                if (send_data)            idle_cnt <= 8'd0;
-                else if (idle_cnt != 8'hFF) idle_cnt <= idle_cnt + 8'd1;
+                if (send_data)     idle_cnt <= 8'd0;
+                else if (!idle_ok) idle_cnt <= idle_cnt + 8'd1;
             end
         end
     end

@@ -74,7 +74,8 @@ module btle_tx_tb;
         // The output must change on a 4-clock grid.  Every change between two non-zero
         // samples must be a 22.5 degree turn: dot product / (2047 * 2047) is about 0.924.
         if (i_out !== pi || q_out !== pq) begin
-            if (sample_changes > 0 && since_change != 3) begin
+            // grid rule applies from one non-zero sample to the next (not idle -> first sample)
+            if ((pi != 0 || pq != 0) && since_change != 3) begin
                 errors = errors + 1;
                 $display("FAIL: samples %0d clocks apart at %0t", since_change + 1, $time);
             end
@@ -102,11 +103,13 @@ module btle_tx_tb;
 
     initial begin
         repeat (6) @(posedge clk);
-        rst = 1'b0;
+        // nonblocking, so the DUT sees each value at the next edge (blocking here races with
+        // the DUT's always block and the one-clock tx_start pulse can be missed)
+        rst <= 1'b0;
         repeat (10) @(posedge clk);
-        tx_start = 1'b1;
+        tx_start <= 1'b1;
         @(posedge clk);
-        tx_start = 1'b0;
+        tx_start <= 1'b0;
         // packet: NBITS * 16 clocks, then padding PAD * 4 clocks
         repeat (16 * NBITS + 4 * PAD + 200) @(posedge clk);
 

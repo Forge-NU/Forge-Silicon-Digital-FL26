@@ -1,0 +1,49 @@
+// btle_mvp_pico2ice.v  --  pico2-ice board top for btle_mvp_top
+//
+// Pins: btle_mvp_pico2ice.pcf.  Build: build.ps1 (yosys -DICE40, nextpnr-ice40 --up5k sg48).
+//
+// The AT86RF215 runs in I/Q radio mode (RF_IQIFC1.CHPM = 1) with the 1.2 V LVDS common mode
+// (RF_IQIFC0.CMV1V2 = 1) needed by the SN65LVDS049.  rf215_init writes those over SPI after every
+// reset; nothing has to be configured from the RP2350.  The RP2350 must only supply clk_local
+// (12 MHz on ICE_35_G0, which firmware/radio_cli does in fpga_init()).
+//
+// This wrapper only fixes the board-level choices:
+//   * rst_ext is tied low (the design has its own power-on reset).
+//   * dbg_rf_irq is left unconnected: all six free 3.3 V pins are used.  Swap it for one of the
+//     debug outputs in the .pcf and here if you want to watch the radio's IRQ line.
+
+module btle_mvp_pico2ice (
+    input  wire clk_local,
+
+    output wire rf_rstn,
+    output wire rf_seln,
+    output wire rf_sclk,
+    output wire rf_mosi,
+    input  wire rf_miso,
+    input  wire rf_irq,
+
+    input  wire rxclk_in,
+    input  wire rxd_in,
+    output wire txd_out,
+    output wire txclk_out,
+
+    output wire uart_txd,
+    output wire led_ready,
+    output wire led_fault,
+    output wire led_rx_ok,
+    output wire led_tx,
+    output wire dbg_rx_lock
+);
+
+    btle_mvp_top u_top (
+        .clk_local(clk_local),
+        .rst_ext(1'b0),
+        .rf_rstn(rf_rstn), .rf_seln(rf_seln), .rf_sclk(rf_sclk), .rf_mosi(rf_mosi),
+        .rf_miso(rf_miso), .rf_irq(rf_irq),
+        .rxclk_in(rxclk_in), .rxd_in(rxd_in), .txd_out(txd_out), .txclk_out(txclk_out),
+        .uart_txd(uart_txd),
+        .led_ready(led_ready), .led_fault(led_fault), .led_rx_ok(led_rx_ok), .led_tx(led_tx),
+        .dbg_rx_lock(dbg_rx_lock), .dbg_rf_irq()
+    );
+
+endmodule

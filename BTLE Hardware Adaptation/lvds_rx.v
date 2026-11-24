@@ -52,29 +52,70 @@ module lvds_rx #(
     wire q_rise, q_fall;
     ddr_in u_in (.clk(rxclk), .pad(rxd), .q_rise(q_rise), .q_fall(q_fall));
 
-    wire b_rise = q_rise ^ INVERT[0];
-    wire b_fall = q_fall ^ INVERT[0];
+    // Re-time both halves into rising-edge flops before any logic.  q_fall is captured on the
+    // falling edge, so logic between it and a rising-edge flop gets only half a period (7.8 ns
+    // at 64 MHz); on the iCE40UP5K the sync-match logic below takes about 20 ns.  Registering
+    // both bits together keeps them paired and costs one cycle of latency.
+    reg q_rise_r, q_fall_r;
+    always @(posedge rxclk) begin
+        q_rise_r <= q_rise;
+        q_fall_r <= q_fall;
+    end
+
+    wire b_rise = q_rise_r ^ INVERT[0];
+    wire b_fall = q_fall_r ^ INVERT[0];
     wire [1:0] pair = SWAP_PAIR ? {b_fall, b_rise} : {b_rise, b_fall};
 
     reg  [31:0] sr;
     wire [31:0] sr_n = {sr[29:0], pair};
 
-    wire match = (sr_n[31:30] == 2'b10) &&
-                 (sr_n[15:14] == 2'b01) &&
-                 (!CHECK_LSB || (!sr_n[16] && !sr_n[0]));
+    // Timing (64 MHz on the iCE40UP5K leaves room for about 4 LUT levels):
+    //   * The window is the registered shift register `win` (one cycle after the pair arrives),
+    //     and words are taken from the same window, so framing is unchanged; latency +1 cycle.
+    //   * match_r and boundary_r are computed one cycle early from the next-state values, so
+    //     match_r == pattern(win) and boundary_r == (cand && cyc == 15) exactly, but both
+    //     come straight from flops.
+    //   * lock_now / miss_drop compare the counter against LIMIT-1 instead of adding 1 first.
+    wire [31:0] win = sr;
 
+    function pattern;
+        input [31:0] w;
+        begin
+            pattern = (w[31:30] == 2'b10) && (w[15:14] == 2'b01) &&
+                      (!CHECK_LSB || (!w[16] && !w[0]));
+        end
+    endfunction
+
+    reg        match_r;      // == pattern(win)
+    reg        boundary_r;   // == cand && (cyc == 15)
     reg        cand;
     reg [3:0]  cyc;
     reg [3:0]  ok;
     reg [3:0]  miss;
     reg        locked;
     reg        pend;
+    reg        emit_r;
 
+    wire       match     = match_r;
     wire [3:0] ok_n      = ok + 4'd1;
     wire [3:0] miss_n    = miss + 4'd1;
-    wire       lock_now  = (ok_n >= LOCK_WORDS);
-    wire       boundary  = cand && (cyc == 4'd15);
+    // ok and miss change only at a candidate start or a boundary, and are next read at the
+    // boundary 16 cycles later, so these registered compares (one cycle behind) are exact.
+    reg        lock_now;     // == (ok + 1 >= LOCK_WORDS)
+    reg        miss_drop;    // == (miss + 1 >= MISS_MAX)
+    always @(posedge rxclk) begin
+        lock_now  <= (ok >= LOCK_WORDS - 1);
+        miss_drop <= (miss >= MISS_MAX - 1);
+    end
+    wire       boundary  = boundary_r;
     wire       emit      = boundary && match && (locked || lock_now) && !rst;
+
+    // Next-state forms: sr becomes sr_n; cand stays set past a cyc==14 cycle (cand only drops
+    // on a boundary) and cyc becomes 15, so boundary next cycle = cand && cyc == 14.
+    always @(posedge rxclk) begin
+        match_r    <= pattern(sr_n);
+        boundary_r <= !rst && cand && (cyc == 4'd14);
+    end
 
     assign rx_lock = locked;
 
@@ -97,7 +138,7 @@ module lvds_rx #(
             end
         end else begin
             cyc <= cyc + 4'd1;
-            if (cyc == 4'd15) begin
+            if (boundary) begin
                 if (match) begin
                     miss <= 4'd0;
                     if (!locked) begin
@@ -106,7 +147,7 @@ module lvds_rx #(
                     end
                 end else begin
                     miss <= miss_n;
-                    if (!locked || (miss_n >= MISS_MAX)) begin
+                    if (!locked || miss_drop) begin
                         cand   <= 1'b0;
                         locked <= 1'b0;
                         ok     <= 4'd0;
@@ -115,14 +156,18 @@ module lvds_rx #(
             end
         end
 
-        if (emit) begin
-            rx_i     <= sr_n[29:17];
-            rx_q     <= sr_n[13:1];
+        // emit is registered (emit_r) so its decode does not also drive the 26 data-register
+        // enables.  One cycle later the window has shifted by one pair (2 bits), so the same
+        // word sits 2 bits higher: I_DATA[13:1] at win[31:19], Q_DATA[13:1] at win[15:3].
+        emit_r <= emit;
+        if (emit_r) begin
+            rx_i     <= win[31:19];
+            rx_q     <= win[15:3];
             rx_valid <= 1'b1;
         end
 
         // hand the word to the bb_clk domain at a slot edge, valid for one bb_clk period
-        if (emit)      pend <= 1'b1;
+        if (emit_r)    pend <= 1'b1;
         else if (slot) pend <= 1'b0;
 
         if (slot) begin
@@ -134,6 +179,7 @@ module lvds_rx #(
         end
 
         if (rst) begin
+            emit_r      <= 1'b0;
             pend        <= 1'b0;
             rx_valid_bb <= 1'b0;
         end

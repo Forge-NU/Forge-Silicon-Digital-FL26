@@ -109,6 +109,8 @@ module btle_mvp_top #(
     output wire rf_sclk,
     output wire rf_mosi,
     input  wire rf_miso,
+    input  wire rf_irq,          // J100 pin 9, active high.  Synchronised below but not used yet:
+                                 // the sequencer polls RF24_STATE and never unmasks an IRQ.
 
     // I/Q link through the SN65LVDS049
     input  wire rxclk_in,        // ROUT1  (RXCLK), must reach a global clock buffer on an FPGA
@@ -121,7 +123,9 @@ module btle_mvp_top #(
     output wire led_ready,       // radio configured and in the RX/TX loop
     output wire led_fault,       // a check failed; the sequencer is restarting
     output wire led_rx_ok,       // stretched: a packet with a good CRC was received
-    output wire led_tx           // stretched: a packet was transmitted
+    output wire led_tx,          // stretched: a packet was transmitted
+    output wire dbg_rx_lock,     // lvds_rx has word lock on RXD24 (rxclk domain, raw)
+    output wire dbg_rf_irq       // rf_irq synchronised to clk_local
 );
 
     // ------------------------------------------------------------------
@@ -225,6 +229,8 @@ module btle_mvp_top #(
     assign led_ready = ready;
     assign led_fault = fault;
 
+    sync_2ff u_irq_sync (.clk(clk_local), .d(rf_irq), .q(dbg_rf_irq));
+
     // ------------------------------------------------------------------
     // transmit chain
     // ------------------------------------------------------------------
@@ -300,6 +306,8 @@ module btle_mvp_top #(
     // clears btle_rx's best_phase (the result-RAM selector), so a dump must finish before the
     // lock drops.  That happens at the next transmit burst, TX_PERIOD_MS later, which is far
     // longer than a dump takes.
+    assign dbg_rx_lock = rx_lock;
+
     wire rx_lock_bb;
     sync_2ff u_lock_sync (.clk(bb_clk), .d(rx_lock), .q(rx_lock_bb));
     reg rst_btle_rx;
