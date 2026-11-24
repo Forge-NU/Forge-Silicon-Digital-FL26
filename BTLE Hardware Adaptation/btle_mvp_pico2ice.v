@@ -9,8 +9,11 @@
 //
 // This wrapper only fixes the board-level choices:
 //   * rst_ext is tied low (the design has its own power-on reset).
-//   * dbg_rf_irq is left unconnected: all six free 3.3 V pins are used.  Swap it for one of the
-//     debug outputs in the .pcf and here if you want to watch the radio's IRQ line.
+//   * dbg_rf_irq is left unconnected on a pin (it is readable over the debug SPI port).
+//   * Radio SPI on the RP-ICE PMOD pins: SCK ICE18, MOSI ICE23, MISO ICE19, SELN ICE25.
+//   * Debug SPI slave for the RP2350 on the other RP-ICE pins (GPIO26 SCK -> ICE21,
+//     GPIO20 MOSI -> ICE27, GPIO24 MISO <- ICE26, GPIO22 CS -> ICE20).  The loader firmware's
+//     terminal uses it to read status and radio registers through the FPGA.
 
 module btle_mvp_pico2ice (
     input  wire clk_local,
@@ -32,7 +35,12 @@ module btle_mvp_pico2ice (
     output wire led_fault,
     output wire led_rx_ok,
     output wire led_tx,
-    output wire dbg_rx_lock
+    output wire dbg_rx_lock,
+
+    input  wire dbg_sck,
+    input  wire dbg_csn,
+    input  wire dbg_mosi,
+    output wire dbg_miso
 );
 
     btle_mvp_top u_top (
@@ -43,7 +51,8 @@ module btle_mvp_pico2ice (
         .rxclk_in(rxclk_in), .rxd_in(rxd_in), .txd_out(txd_out), .txclk_out(txclk_out),
         .uart_txd(uart_txd),
         .led_ready(led_ready), .led_fault(led_fault), .led_rx_ok(led_rx_ok), .led_tx(led_tx),
-        .dbg_rx_lock(dbg_rx_lock), .dbg_rf_irq()
+        .dbg_rx_lock(dbg_rx_lock), .dbg_rf_irq(),
+        .dbg_sck(dbg_sck), .dbg_csn(dbg_csn), .dbg_mosi(dbg_mosi), .dbg_miso(dbg_miso)
     );
 
 endmodule

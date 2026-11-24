@@ -39,6 +39,9 @@ module rf215_init #(
     parameter BOOT_CLKS       = 1600,       // after RSTN release; datasheet max 1 us to TRXOFF
     parameter POLL_MAX        = 4096,       // tries per status poll
     parameter POLL_GAP_CLKS   = 16,
+    parameter PN_GAP_CLKS     = 16,         // gap between part-number retries after reset; the real
+                                            //  radio answers 0x00 while polled back to back, so
+                                            //  use ~1 ms (12000 at 12 MHz) on hardware
     parameter TX_PERIOD_CLKS  = 1600000,    // about 100 ms between bursts
     parameter TX_TIMEOUT_CLKS = 160000,     // give up waiting on the TX datapath
     parameter SYNC_CLKS       = 800,        // 50 us for TX link start-up and word sync
@@ -93,7 +96,20 @@ module rf215_init #(
     // status
     output wire ready,                      // init finished, in the RX/TX loop
     output reg  fault,                      // a check failed; auto-restarts
-    output wire listening                   // radio is in RX waiting for the next TX
+    output wire listening,                  // radio is in RX waiting for the next TX
+
+    // debug: read any radio register between sequencer transactions.  A dbg_req pulse is
+    // served the next time the sequencer is idle (listening, or waiting out a fault); dbg_done
+    // then rises and dbg_data holds the value until the next request.
+    input  wire        dbg_req,
+    input  wire [13:0] dbg_addr,
+    output reg  [7:0]  dbg_data,
+    output reg         dbg_done,
+    output reg  [7:0]  pn_seen,             // part number read at the last bring-up
+    output reg  [7:0]  last_rx,             // last byte the sequencer read over SPI
+    output wire [5:0]  pc_out,
+    output wire [3:0]  state_out,
+    output reg  [7:0]  fault_cnt
 );
 
     // ------------------------------------------------------------------
@@ -201,7 +217,12 @@ module rf215_init #(
                      S_WAIT_CLKS   = 4'd8,
                      S_WAIT_DATA   = 4'd9,
                      S_WAIT_DONE   = 4'd10,
-                     S_FAULT       = 4'd11;
+                     S_FAULT       = 4'd11,
+                     S_DBG_START   = 4'd12,
+                     S_DBG_WAIT    = 4'd13;
+
+    reg        dbg_pend;
+    reg [3:0]  dbg_ret;
 
     reg [3:0]  state;
     reg [5:0]  pc;
@@ -236,10 +257,25 @@ module rf215_init #(
     assign rstn_radio = rstn_r;
     assign ready      = (pc >= LOOP_IDX) && !fault;
     assign listening  = (state == S_WAIT_PERIOD);
+    assign pc_out     = pc;
+    assign state_out  = state;
+
+    // fault counter (rising edges of fault), saturating
+    reg fault_d;
+    always @(posedge clk) begin
+        fault_d <= fault;
+        if (rst)                               fault_cnt <= 8'd0;
+        else if (fault && !fault_d && fault_cnt != 8'hFF) fault_cnt <= fault_cnt + 8'd1;
+    end
 
     always @(posedge clk) begin
         tx_go     <= 1'b0;
         spi_start <= 1'b0;
+
+        if (dbg_req) begin
+            dbg_pend <= 1'b1;
+            dbg_done <= 1'b0;
+        end
 
         // latch the TX datapath pulses so a pulse that arrives while an SPI
         // transaction is in flight is not lost
@@ -262,6 +298,12 @@ module rf215_init #(
             data_r        <= 8'd0;
             mask_r        <= 8'd0;
             spi_tx        <= 24'd0;
+            dbg_pend      <= 1'b0;
+            dbg_done      <= 1'b0;
+            dbg_data      <= 8'd0;
+            dbg_ret       <= S_RST_LOW;
+            pn_seen       <= 8'd0;
+            last_rx       <= 8'd0;
         end else begin
             case (state)
 
@@ -338,6 +380,8 @@ module rf215_init #(
                 end
 
                 S_EVAL: begin
+                    if (op_is_read) last_rx <= spi_rx;
+                    if (op_r == OP_PN) pn_seen <= spi_rx;
                     case (op_r)
                         OP_WR: begin
                             pc    <= pc + 6'd1;
@@ -346,9 +390,15 @@ module rf215_init #(
                         OP_PN: begin
                             // 0x34 = AT86RF215, 0x35 = AT86RF215IQ.  0x36 is the
                             // sub-GHz-only AT86RF215M and has no 2.4 GHz radio.
+                            // Retried like a state poll: the real radio returns 0x00 until its
+                            // crystal oscillator has started after RSTN (seen on hardware).
                             if (spi_rx == 8'h34 || spi_rx == 8'h35) begin
                                 pc    <= pc + 6'd1;
                                 state <= S_FETCH;
+                            end else if (poll_cnt != POLL_MAX) begin
+                                poll_cnt <= poll_cnt + 13'd1;
+                                timer    <= 32'd0;
+                                state    <= S_GAP;
                             end else begin
                                 fault     <= 1'b1;
                                 stream_en <= 1'b0;
@@ -376,12 +426,15 @@ module rf215_init #(
                 end
 
                 S_GAP: begin
-                    if (timer == POLL_GAP_CLKS) state <= S_SPI_START;
+                    if (timer == ((op_r == OP_PN) ? PN_GAP_CLKS : POLL_GAP_CLKS)) state <= S_SPI_START;
                     else timer <= timer + 32'd1;
                 end
 
                 S_WAIT_PERIOD: begin
-                    if (timer == TX_PERIOD_CLKS) begin
+                    if (dbg_pend) begin                 // serve a debug read; timer resumes after
+                        dbg_ret <= S_WAIT_PERIOD;
+                        state   <= S_DBG_START;
+                    end else if (timer == TX_PERIOD_CLKS) begin
                         pc    <= pc + 6'd1;
                         state <= S_FETCH;
                     end else begin
@@ -426,8 +479,26 @@ module rf215_init #(
                     end
                 end
 
+                S_DBG_START: begin
+                    spi_tx    <= {2'b00, dbg_addr, 8'h00};
+                    spi_start <= 1'b1;
+                    state     <= S_DBG_WAIT;
+                end
+
+                S_DBG_WAIT: begin
+                    if (spi_done) begin
+                        dbg_data <= spi_rx;
+                        dbg_done <= 1'b1;
+                        dbg_pend <= 1'b0;
+                        state    <= dbg_ret;
+                    end
+                end
+
                 S_FAULT: begin
-                    if (timer == FAULT_CLKS) begin
+                    if (dbg_pend) begin                 // radio is out of reset here: allow reads
+                        dbg_ret <= S_FAULT;
+                        state   <= S_DBG_START;
+                    end else if (timer == FAULT_CLKS) begin
                         fault  <= 1'b0;
                         pc     <= 6'd0;
                         timer  <= 32'd0;

@@ -17,11 +17,12 @@ set_io rxd_in      46     # J2-29 <- ROUT2 (pin 14) <- RXDP24/N
 set_io txclk_out   48     # J2-27 -> DIN1  (pin 10) -> TXCLKP/N
 set_io txd_out     47     # J2-28 -> DIN2  (pin 11) -> TXDP/N
 
-# --- radio SPI / control to ATREB215-XPRO J100 (J2 Bank 0 PMOD, 3.3 V)
-set_io rf_sclk     28     # J2-9  -> J100-18 SPI_SCK
-set_io rf_mosi     32     # J2-11 -> J100-16 SPI_MOSI
-set_io -pullup yes rf_miso 36   # J2-13 <- J100-17 SPI_MISO (radio tri-states MISO while SELN is high)
-set_io rf_seln     42     # J2-15 -> J100-15 SPI_SS_A (active low)
+# --- radio SPI to ATREB215-XPRO J100 on the RP-ICE PMOD pins (the RP2350 keeps GPIO23/25/27/30
+#     undriven); RSTN and IRQ stay on J2 Bank 0
+set_io rf_sclk     18     # ICE_18 (RP-ICE PMOD, shared with RP2350 GPIO27) -> J100-18 SPI_SCK
+set_io rf_mosi     23     # ICE_23 (RP-ICE PMOD, shared with RP2350 GPIO25) -> J100-16 SPI_MOSI
+set_io -pullup yes rf_miso 19   # ICE_19 (RP-ICE PMOD, shared with RP2350 GPIO23) <- J100-17 SPI_MISO (tri-stated while SELN high)
+set_io rf_seln     25     # ICE_25 (RP-ICE PMOD, shared with RP2350 GPIO30) -> J100-15 SPI_SS_A (active low)
 set_io rf_irq      31     # J2-10 <- J100-9  IRQ (active high, RF_CFG.IRQP = 0)
 set_io rf_rstn     34     # J2-12 -> J100-7  RESET (active low); only matters if that wire is fitted
 
@@ -34,3 +35,9 @@ set_io uart_txd    45     # J2-30  packet dump, 115200 8N1
 set_io led_rx_ok   2      # J2-32  stretched pulse: packet with good CRC received
 set_io led_tx      3      # J2-33  stretched pulse: packet transmitted
 set_io dbg_rx_lock 4      # J2-34  LVDS RX word framing locked (RXD24 decoding); high whenever the radio is in RX
+
+# --- debug SPI slave for the RP2350 (remaining RP-ICE pins, on-board, no wiring)
+set_io dbg_sck              21   # ICE_21 <- RP2350 GPIO26 (bit-banged by the loader)
+set_io dbg_mosi             27   # ICE_27 <- RP2350 GPIO20
+set_io dbg_miso             26   # ICE_26 -> RP2350 GPIO24
+set_io -pullup yes dbg_csn  20   # ICE_20 <- RP2350 GPIO22 (idle high)

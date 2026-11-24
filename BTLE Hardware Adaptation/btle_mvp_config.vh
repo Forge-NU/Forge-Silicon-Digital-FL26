@@ -58,7 +58,7 @@
 //   WHAT    Wait after releasing RSTN before the first SPI access.  The sequencer also polls
 //           the state register, so this is only a head start.
 //   CHANGE  Rarely.
-`define CFG_BOOT_US 100
+`define CFG_BOOT_US 1000
 
 // CFG_POLL_MAX
 //   STATUS  DERIVED.

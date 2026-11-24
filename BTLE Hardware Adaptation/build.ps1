@@ -26,7 +26,7 @@ $env:PATH = "$OssCad\bin;$OssCad\lib;$env:PATH"
 $top  = "btle_mvp_pico2ice"
 $repo = "..\BTLE\verilog"
 $src  = @(
-    "btle_mvp_pico2ice.v", "btle_mvp_top.v", "rf215_init.v", "spi_master.v", "bb_clkgen.v",
+    "btle_mvp_pico2ice.v", "btle_mvp_top.v", "rf215_init.v", "spi_master.v", "spi_dbg_slave.v", "bb_clkgen.v",
     "ddr_io.v", "lvds_rx.v", "lvds_tx.v", "btle_tx_min.v", "msk_modulator.v",
     "pdu_uart_dump.v", "sync_cells.v", "btle_rx_sps.v",
     "$repo\btle_rx_core.v", "$repo\gfsk_demodulation.v", "$repo\search_unique_bit_sequence.v",

@@ -125,7 +125,13 @@ module btle_mvp_top #(
     output wire led_rx_ok,       // stretched: a packet with a good CRC was received
     output wire led_tx,          // stretched: a packet was transmitted
     output wire dbg_rx_lock,     // lvds_rx has word lock on RXD24 (rxclk domain, raw)
-    output wire dbg_rf_irq       // rf_irq synchronised to clk_local
+    output wire dbg_rf_irq,      // rf_irq synchronised to clk_local
+
+    // debug SPI slave for the RP2350 (spi_dbg_slave.v): status registers and radio read-through
+    input  wire dbg_sck,
+    input  wire dbg_csn,
+    input  wire dbg_mosi,
+    output wire dbg_miso
 );
 
     // ------------------------------------------------------------------
@@ -191,7 +197,13 @@ module btle_mvp_top #(
     // ------------------------------------------------------------------
     // radio sequencer (local clock)
     // ------------------------------------------------------------------
-    wire stream_en, tx_go, ready, fault;
+    wire stream_en, tx_go, ready, fault, listening;
+    wire        dbg_done;
+    wire [7:0]  dbg_data, pn_seen, seq_last_rx, fault_cnt;
+    wire [5:0]  seq_pc;
+    wire [3:0]  seq_state;
+    reg         dbg_req;
+    reg  [13:0] dbg_addr;
     wire tx_data_done_l, tx_done_l;
 
     rf215_init #(
@@ -199,6 +211,7 @@ module btle_mvp_top #(
         .BOOT_CLKS(us2clk(BOOT_US)),
         .POLL_MAX(POLL_MAX),
         .POLL_GAP_CLKS(us2clk(POLL_GAP_US)),
+        .PN_GAP_CLKS(us2clk(1000)),
         .TX_PERIOD_CLKS(ms2clk(TX_PERIOD_MS)),
         .TX_TIMEOUT_CLKS(ms2clk(TX_TIMEOUT_MS)),
         .SYNC_CLKS(us2clk(SYNC_US)),
@@ -223,7 +236,10 @@ module btle_mvp_top #(
         .rstn_radio(rf_rstn), .seln(rf_seln), .sclk(rf_sclk), .mosi(rf_mosi), .miso(rf_miso),
         .stream_en(stream_en), .tx_go(tx_go),
         .tx_data_done(tx_data_done_l), .tx_done(tx_done_l),
-        .ready(ready), .fault(fault), .listening()
+        .ready(ready), .fault(fault), .listening(listening),
+        .dbg_req(dbg_req), .dbg_addr(dbg_addr), .dbg_data(dbg_data), .dbg_done(dbg_done),
+        .pn_seen(pn_seen), .last_rx(seq_last_rx), .pc_out(seq_pc), .state_out(seq_state),
+        .fault_cnt(fault_cnt)
     );
 
     assign led_ready = ready;
@@ -389,6 +405,85 @@ module btle_mvp_top #(
     // ------------------------------------------------------------------
     pulse_stretch #(.CLKS(ms2clk(LED_STRETCH_MS))) u_led_rx (
         .clk(clk_local), .rst(rst_local), .pulse(rx_evt & cap_ok), .out(led_rx_ok));
+    // ------------------------------------------------------------------
+    // debug SPI port (clk_local domain).  Register map, read unless noted:
+    //   0x00  0xB7 magic                 0x01  0x01 version
+    //   0x02  status {2'b0, irq, rx_lock, stream_en, listening, fault, ready}
+    //   0x03  radio part number read at bring-up (expect 0x34 or 0x35)
+    //   0x04  last byte the sequencer read from the radio (e.g. RF24_STATE poll)
+    //   0x05  sequencer program counter  0x06  sequencer engine state
+    //   0x07  fault count   0x08  TX packets   0x09  RX good-CRC packets   0x0A  RX decodes (all)
+    //   0x10  R/W radio address [13:8]   0x11  R/W radio address [7:0]
+    //   0x12  write: read that radio register;  read: {6'b0, pending, done}
+    //   0x13  radio read result
+    // ------------------------------------------------------------------
+    wire rx_lock_l;
+    sync_2ff u_lock_l (.clk(clk_local), .d(rx_lock), .q(rx_lock_l));
+
+    reg [7:0] tx_cnt, rx_ok_cnt, rx_all_cnt;
+    reg       dbg_pending_l;
+    always @(posedge clk_local) begin
+        if (rst_local) begin
+            tx_cnt <= 8'd0; rx_ok_cnt <= 8'd0; rx_all_cnt <= 8'd0;
+        end else begin
+            if (tx_go)            tx_cnt     <= tx_cnt + 8'd1;
+            if (rx_evt && cap_ok) rx_ok_cnt  <= rx_ok_cnt + 8'd1;
+            if (rx_evt)           rx_all_cnt <= rx_all_cnt + 8'd1;
+        end
+    end
+
+    wire [6:0] dreg_addr, dwr_addr;
+    wire [7:0] dwr_data;
+    wire       dwr_stb;
+    reg  [7:0] dreg_data;
+    always @(*) begin
+        case (dreg_addr)
+            7'h00: dreg_data = 8'hB7;
+            7'h01: dreg_data = 8'h01;
+            7'h02: dreg_data = {2'b00, dbg_rf_irq, rx_lock_l, stream_en, listening, fault, ready};
+            7'h03: dreg_data = pn_seen;
+            7'h04: dreg_data = seq_last_rx;
+            7'h05: dreg_data = {2'b00, seq_pc};
+            7'h06: dreg_data = {4'h0, seq_state};
+            7'h07: dreg_data = fault_cnt;
+            7'h08: dreg_data = tx_cnt;
+            7'h09: dreg_data = rx_ok_cnt;
+            7'h0A: dreg_data = rx_all_cnt;
+            7'h10: dreg_data = {2'b00, dbg_addr[13:8]};
+            7'h11: dreg_data = dbg_addr[7:0];
+            7'h12: dreg_data = {6'b0, dbg_pending_l, dbg_done};
+            7'h13: dreg_data = dbg_data;
+            default: dreg_data = 8'h00;
+        endcase
+    end
+
+    reg dbg_done_d;
+    always @(posedge clk_local) begin
+        dbg_req    <= 1'b0;
+        dbg_done_d <= dbg_done;
+        if (rst_local) begin
+            dbg_addr      <= 14'h000D;
+            dbg_pending_l <= 1'b0;
+        end else begin
+            if (dbg_done && !dbg_done_d) dbg_pending_l <= 1'b0;   // new result arrived
+            if (dwr_stb) begin
+                case (dwr_addr)
+                    7'h10: dbg_addr[13:8] <= dwr_data[5:0];
+                    7'h11: dbg_addr[7:0]  <= dwr_data;
+                    7'h12: begin dbg_req <= 1'b1; dbg_pending_l <= 1'b1; end
+                    default: ;
+                endcase
+            end
+        end
+    end
+
+    spi_dbg_slave u_dbg (
+        .clk(clk_local), .rst(rst_local),
+        .sck(dbg_sck), .csn(dbg_csn), .mosi(dbg_mosi), .miso(dbg_miso),
+        .rd_addr(dreg_addr), .rd_data(dreg_data),
+        .wr_stb(dwr_stb), .wr_addr(dwr_addr), .wr_data(dwr_data)
+    );
+
     pulse_stretch #(.CLKS(ms2clk(LED_STRETCH_MS))) u_led_tx (
         .clk(clk_local), .rst(rst_local), .pulse(tx_go), .out(led_tx));
 

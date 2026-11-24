@@ -47,8 +47,24 @@ module rf215_init_tb;
         .rstn_radio(rstn), .seln(seln), .sclk(sclk), .mosi(mosi), .miso(miso),
         .stream_en(stream_en), .tx_go(tx_go),
         .tx_data_done(tx_data_done), .tx_done(tx_done),
-        .ready(ready), .fault(fault), .listening(listening)
+        .ready(ready), .fault(fault), .listening(listening),
+        .dbg_req(dbg_req), .dbg_addr(dbg_addr), .dbg_data(dbg_data), .dbg_done(dbg_done),
+        .pn_seen(pn_seen), .last_rx(), .pc_out(), .state_out(), .fault_cnt()
     );
+
+    // debug read-through: read RF_PN (0x000D) while the sequencer runs (or sits in a fault)
+    reg         dbg_req  = 1'b0;
+    reg  [13:0] dbg_addr = 14'h000D;
+    wire [7:0]  dbg_data, pn_seen;
+    wire        dbg_done;
+    integer     dbg_wait = 0;
+    reg         dbg_ok   = 1'b0;
+    initial begin
+        repeat (40000) @(posedge clk);
+        dbg_req <= 1'b1; @(posedge clk); dbg_req <= 1'b0;
+        while (!dbg_done && dbg_wait < 20000) begin @(posedge clk); dbg_wait = dbg_wait + 1; end
+        dbg_ok = dbg_done && (dbg_data == (SCENARIO == 1 ? 8'h36 : 8'h34));
+    end
 
     rf215_model #(
         .PN(SCENARIO == 1 ? 8'h36 : 8'h34),
@@ -110,6 +126,9 @@ module rf215_init_tb;
         repeat (4) @(posedge clk);
         rst = 1'b0;
         repeat (80000) @(posedge clk);
+
+        check(dbg_ok,                             "debug read of RF_PN wrong or not served");
+        check(pn_seen == (SCENARIO == 1 ? 8'h36 : 8'h34), "pn_seen wrong");
 
         case (SCENARIO)
             0: begin
