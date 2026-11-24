@@ -183,7 +183,13 @@ module btle_mvp_top #(
     always @(posedge clk_local) begin
         if (!por_done) por_cnt <= por_cnt + 16'd1;
     end
-    wire rst_local = !por_done | rst_ext;
+    // LVDS bench settings (debug register 0x18), reset only at power-up so a soft reset keeps them:
+    //   bit0 invert TXD, bit1 invert TXCLK, bit2 invert RXD, bit3 swap RX pair, bits5:4 SKEWDRV,
+    //   bit6 RX 1-bit offset (bit 31 on falling RXCLK), bit7 hold the sequencer (no TX bursts)
+    reg  [7:0] lvds_cfg;
+    reg  [4:0] soft_rst_cnt;                 // debug register 0x19 write: soft reset
+    wire       soft_rst = (soft_rst_cnt != 5'd0);
+    wire rst_local = !por_done | rst_ext | soft_rst;
 
     wire rst_rx;                           // rxclk domain
     rst_sync u_rst_rx (.clk(rxclk_in), .rst_in(rst_local), .rst_out(rst_rx));
@@ -204,6 +210,8 @@ module btle_mvp_top #(
     wire [3:0]  seq_state;
     reg         dbg_req;
     reg  [13:0] dbg_addr;
+    reg         dbg_wr    = 1'b0;     // debug access is a radio write (register 0x1E)
+    reg  [7:0]  dbg_wdata = 8'h00;
     wire tx_data_done_l, tx_done_l;
 
     rf215_init #(
@@ -212,6 +220,7 @@ module btle_mvp_top #(
         .POLL_MAX(POLL_MAX),
         .POLL_GAP_CLKS(us2clk(POLL_GAP_US)),
         .PN_GAP_CLKS(us2clk(1000)),
+        .CHECK_PN(`CFG_CHECK_PN),
         .TX_PERIOD_CLKS(ms2clk(TX_PERIOD_MS)),
         .TX_TIMEOUT_CLKS(ms2clk(TX_TIMEOUT_MS)),
         .SYNC_CLKS(us2clk(SYNC_US)),
@@ -237,7 +246,7 @@ module btle_mvp_top #(
         .stream_en(stream_en), .tx_go(tx_go),
         .tx_data_done(tx_data_done_l), .tx_done(tx_done_l),
         .ready(ready), .fault(fault), .listening(listening),
-        .dbg_req(dbg_req), .dbg_addr(dbg_addr), .dbg_data(dbg_data), .dbg_done(dbg_done),
+        .skewdrv_in(lvds_cfg[5:4]), .hold(lvds_cfg[7]), .dbg_wr(dbg_wr), .dbg_wdata(dbg_wdata), .dbg_req(dbg_req), .dbg_addr(dbg_addr), .dbg_data(dbg_data), .dbg_done(dbg_done),
         .pn_seen(pn_seen), .last_rx(seq_last_rx), .pc_out(seq_pc), .state_out(seq_state),
         .fault_cnt(fault_cnt)
     );
@@ -294,6 +303,7 @@ module btle_mvp_top #(
         .MIN_IDLE_WORDS(LVDS_TX_MIN_IDLE_WORDS),
         .INVERT(LVDS_TX_INVERT)
     ) u_ltx (
+        .inv_data(lvds_cfg[0]), .inv_clk(lvds_cfg[1]),
         .rxclk(rxclk_in), .rst(rst_rx), .slot(slot),
         .tx_i(tx_i), .tx_q(tx_q), .tx_ctrl(1'b0), .stream_en(stream_en),
         .txd(txd_out), .txclk(txclk_out), .tx_data_active()
@@ -303,7 +313,7 @@ module btle_mvp_top #(
     // receive chain
     // ------------------------------------------------------------------
     wire signed [12:0] rx_i_bb, rx_q_bb;
-    wire               rx_valid_bb, rx_lock;
+    wire               rx_valid_bb, rx_lock, rxd_bit;
 
     lvds_rx #(
         .LOCK_WORDS(LVDS_RX_LOCK_WORDS),
@@ -312,8 +322,9 @@ module btle_mvp_top #(
         .INVERT(LVDS_RX_INVERT),
         .SWAP_PAIR(LVDS_RX_SWAP_PAIR)
     ) u_lrx (
+        .inv(lvds_cfg[2]), .swap(lvds_cfg[3]), .offs(lvds_cfg[6]),
         .rxclk(rxclk_in), .rst(rst_rx), .rxd(rxd_in), .slot(slot),
-        .rx_i(), .rx_q(), .rx_valid(), .rx_lock(rx_lock),
+        .rx_i(), .rx_q(), .rx_valid(), .rx_lock(rx_lock), .dbg_bit(rxd_bit),
         .rx_i_bb(rx_i_bb), .rx_q_bb(rx_q_bb), .rx_valid_bb(rx_valid_bb)
     );
 
@@ -416,9 +427,67 @@ module btle_mvp_top #(
     //   0x10  R/W radio address [13:8]   0x11  R/W radio address [7:0]
     //   0x12  write: read that radio register;  read: {6'b0, pending, done}
     //   0x13  radio read result
+    //   0x18  R/W LVDS bench settings (see lvds_cfg)   0x19  write: soft reset
+    //   0x1E  write: write this value to the radio at 0x10/0x11 (same done/pending flags as 0x12)
     // ------------------------------------------------------------------
     wire rx_lock_l;
     sync_2ff u_lock_l (.clk(clk_local), .d(rx_lock), .q(rx_lock_l));
+
+    // RXCLK frequency meter: clk_local opens a 1 ms gate every 2 ms; the rxclk domain counts
+    // its own cycles while the gate is open and holds the result (64000 = 64.000 MHz).
+    // Registers 0x14..0x16 = count[23:16], [15:8], [7:0]; 0x17 = number of measurements so far
+    // (stops advancing when RXCLK stops).  Diagnostic only: a read can tear at the update instant.
+    localparam integer GATE_CLKS = CLK_LOCAL_HZ / 1000;
+    reg [15:0] gate_div;
+    reg        gate;
+    always @(posedge clk_local) begin
+        if (rst_local) begin
+            gate_div <= 16'd0; gate <= 1'b0;
+        end else if (gate_div == GATE_CLKS - 1) begin
+            gate_div <= 16'd0; gate <= ~gate;
+        end else begin
+            gate_div <= gate_div + 16'd1;
+        end
+    end
+    reg [2:0]  gate_rx  = 3'd0;
+    reg [23:0] fcnt     = 24'd0;
+    reg [23:0] fhold    = 24'd0;
+    reg        fupd_tog = 1'b0;
+    reg        rxd_d    = 1'b0;
+    reg [15:0] ecnt = 16'd0, ehold = 16'd0, ocnt = 16'd0, ohold = 16'd0;
+    always @(posedge rxclk_in) begin
+        gate_rx <= {gate_rx[1:0], gate};
+        if (gate_rx[1]) fcnt <= fcnt + 24'd1;
+        rxd_d <= rxd_bit;
+        if (gate_rx[1]) begin
+            if (rxd_d != rxd_bit) ecnt <= ecnt + 16'd1;   // <= 64000 per 1 ms gate
+            if (rxd_bit)          ocnt <= ocnt + 16'd1;
+        end
+        if (!gate_rx[1] && gate_rx[2]) begin      // gate closed: hold the count
+            fhold    <= fcnt;
+            fcnt     <= 24'd0;
+            ehold    <= ecnt;
+            ecnt     <= 16'd0;
+            ohold    <= ocnt;
+            ocnt     <= 16'd0;
+            fupd_tog <= ~fupd_tog;
+        end
+    end
+    // RXD24 activity over the same 1 ms gate: 0x1A/0x1B = toggles, 0x1C/0x1D = cycles sampled high
+    wire [15:0] ehold_l, ohold_l;
+    sync_2ff #(.W(16)) u_ehold (.clk(clk_local), .d(ehold), .q(ehold_l));
+    sync_2ff #(.W(16)) u_ohold (.clk(clk_local), .d(ohold), .q(ohold_l));
+    wire [23:0] fhold_l;
+    wire        fupd_l;
+    sync_2ff #(.W(24)) u_fhold (.clk(clk_local), .d(fhold), .q(fhold_l));
+    sync_2ff u_fupd (.clk(clk_local), .d(fupd_tog), .q(fupd_l));
+    reg       fupd_d;
+    reg [7:0] fmeas_cnt;
+    always @(posedge clk_local) begin
+        fupd_d <= fupd_l;
+        if (rst_local) fmeas_cnt <= 8'd0;
+        else if (fupd_l != fupd_d) fmeas_cnt <= fmeas_cnt + 8'd1;
+    end
 
     reg [7:0] tx_cnt, rx_ok_cnt, rx_all_cnt;
     reg       dbg_pending_l;
@@ -453,6 +522,16 @@ module btle_mvp_top #(
             7'h11: dreg_data = dbg_addr[7:0];
             7'h12: dreg_data = {6'b0, dbg_pending_l, dbg_done};
             7'h13: dreg_data = dbg_data;
+            7'h14: dreg_data = fhold_l[23:16];
+            7'h15: dreg_data = fhold_l[15:8];
+            7'h16: dreg_data = fhold_l[7:0];
+            7'h17: dreg_data = fmeas_cnt;
+            7'h18: dreg_data = lvds_cfg;
+            7'h1E: dreg_data = dbg_wdata;
+            7'h1A: dreg_data = ehold_l[15:8];
+            7'h1B: dreg_data = ehold_l[7:0];
+            7'h1C: dreg_data = ohold_l[15:8];
+            7'h1D: dreg_data = ohold_l[7:0];
             default: dreg_data = 8'h00;
         endcase
     end
@@ -470,10 +549,22 @@ module btle_mvp_top #(
                 case (dwr_addr)
                     7'h10: dbg_addr[13:8] <= dwr_data[5:0];
                     7'h11: dbg_addr[7:0]  <= dwr_data;
-                    7'h12: begin dbg_req <= 1'b1; dbg_pending_l <= 1'b1; end
+                    7'h12: begin dbg_req <= 1'b1; dbg_wr <= 1'b0; dbg_pending_l <= 1'b1; end
+                    7'h1E: begin dbg_req <= 1'b1; dbg_wr <= 1'b1; dbg_wdata <= dwr_data; dbg_pending_l <= 1'b1; end
                     default: ;
                 endcase
             end
+        end
+    end
+
+    always @(posedge clk_local) begin
+        if (!por_done) begin
+            lvds_cfg     <= {1'b0, `CFG_LVDS_RX_OFFSET, SKEWDRV, 4'b0000};  // polarity bits XOR the CFG_ defaults
+            soft_rst_cnt <= 5'd0;
+        end else begin
+            if (dwr_stb && dwr_addr == 7'h18) lvds_cfg <= dwr_data;
+            if (dwr_stb && dwr_addr == 7'h19) soft_rst_cnt <= 5'd31;   // 31 clk_local cycles
+            else if (soft_rst_cnt != 5'd0)    soft_rst_cnt <= soft_rst_cnt - 5'd1;
         end
     end
 

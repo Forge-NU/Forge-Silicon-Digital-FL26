@@ -60,6 +60,14 @@
 //   CHANGE  Rarely.
 `define CFG_BOOT_US 1000
 
+// CFG_CHECK_PN
+//   STATUS  A choice (bench workaround, 2026-11-24).
+//   WHAT    1: the sequencer requires RF_PN = 0x34/0x35 before configuring the radio.
+//           0: it records the part number (debug register 0x03) but continues anyway.
+//   CHANGE  Set back to 1 once the radio SPI reads reliably; on the bench RF_PN read 0x00
+//           while other registers (RF24_STATE) read correctly.
+`define CFG_CHECK_PN 1
+
 // CFG_POLL_MAX
 //   STATUS  DERIVED.
 //   WHAT    How many times a state poll (e.g. wait for TXPREP) is retried before declaring a fault.
@@ -252,7 +260,7 @@
 //           fault shows up as a missing packet rather than a fault loop.
 //   CHANGE  Enable it once the transmit path works, to turn a silent failure into led_fault.
 //           It is the best on-chip check that the TX LVDS pair is wired and driven correctly.
-`define CFG_EN_SYNC_POLL 0
+`define CFG_EN_SYNC_POLL 1
 `define CFG_SYNC_MASK 8'h80
 
 
@@ -295,6 +303,14 @@
 //   WHAT    1 swaps which edge's sample is treated as the first bit of each pair.
 //   CHANGE  If the line is clean and correct but never locks, and INVERT did not help, try 1.
 `define CFG_LVDS_RX_SWAP_PAIR 0
+
+// CFG_LVDS_RX_OFFSET
+//   STATUS  VERIFIED on the bench (2026-11-24): with 1, lvds_rx locks 10/10 at every SKEWDRV 0..3;
+//           with 0 it never locks.  Bit 31 arrives on the FPGA's falling-edge sample, as if the
+//           RXCLK pair were swapped (the REB215 puts P on SATA pin 5, the reverse of SATA naming).
+//   WHAT    1: words start on the falling-edge sample (pairs fall(k), rise(k+1)).
+//   CHANGE  Set 0 if the RXCLK pair is rewired with the other polarity.
+`define CFG_LVDS_RX_OFFSET 1
 
 // CFG_LVDS_TX_MIN_IDLE_WORDS
 //   STATUS  VERIFIED: at least 2.5 us (10 words) of zeros between transmit bursts (4.5.6).

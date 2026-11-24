@@ -44,6 +44,10 @@ $ys = "read_verilog -DICE40 -I. $src; " +
       "synth_ice40 -top $top -dsp -run map_cells: -json build/$top.json"
 & yosys -q -l build/yosys.log -p $ys
 if ($LASTEXITCODE -ne 0) { throw "yosys failed, see build\yosys.log" }
+# A signal driven from two always blocks only warns in yosys and is then silently replaced by a
+# constant; that hid a broken debug register once.  Treat it as an error.
+$conf = Select-String -Path build/yosys.log -Pattern "conflicting drivers|Driver-driver conflict"
+if ($conf) { $conf | Select-Object -First 5 | ForEach-Object { Write-Host $_.Line }; throw "multiple drivers, see build\yosys.log" }
 
 Write-Host "== nextpnr-ice40"
 $ok = $false

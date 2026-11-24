@@ -39,6 +39,8 @@ module lvds_tx #(
     input  wire signed [12:0] tx_q,
     input  wire               tx_ctrl,       // I_DATA[0]; 0 unless embedded TX control is used
     input  wire               stream_en,     // local clock domain, synchronised here
+    input  wire               inv_data,      // runtime: invert TXD (XOR with INVERT), any domain
+    input  wire               inv_clk,       // runtime: invert TXCLK, any domain
 
     output wire               txd,           // to the SN65LVDS049 (DIN2)
     output wire               txclk,         // to the SN65LVDS049 (DIN1)
@@ -59,6 +61,15 @@ module lvds_tx #(
     end
 
     wire en = en_sync[1];
+
+    // runtime polarity controls, synchronised into rxclk (static during operation)
+    reg [1:0] dinv_s, cinv_s;
+    always @(posedge rxclk) begin
+        dinv_s <= {dinv_s[0], inv_data};
+        cinv_s <= {cinv_s[0], inv_clk};
+    end
+    wire dinv = INVERT[0] ^ dinv_s[1];
+    wire cinv = cinv_s[1];
 
     reg [3:0]  wc;           // clock cycle within the word, 0..15
     reg [31:0] sh;
@@ -102,8 +113,8 @@ module lvds_tx #(
 
             // at edge k: d_fall <= B_k = bit[30-2k],  d_rise <= A_(k+1) = bit[29-2k];
             // on the last edge A_0 of the next word comes from nw
-            d_fall <= sh[31] ^ INVERT[0];
-            d_rise <= (last ? nw[31] : sh[30]) ^ INVERT[0];
+            d_fall <= sh[31] ^ dinv;
+            d_rise <= (last ? nw[31] : sh[30]) ^ dinv;
             sh     <= last ? {nw[30:0], 1'b0} : {sh[29:0], 2'b00};
             wc     <= wc + 4'd1;
 
@@ -116,6 +127,6 @@ module lvds_tx #(
     end
 
     ddr_out u_txd   (.clk(rxclk), .d_rise(d_rise), .d_fall(d_fall), .pad(txd));
-    ddr_out u_txclk (.clk(rxclk), .d_rise(1'b1),   .d_fall(1'b0),   .pad(txclk));
+    ddr_out u_txclk (.clk(rxclk), .d_rise(~cinv),  .d_fall(cinv),   .pad(txclk));
 
 endmodule

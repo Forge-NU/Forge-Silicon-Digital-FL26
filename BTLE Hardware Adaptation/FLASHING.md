@@ -38,29 +38,113 @@ The flash can be left in continuous-read mode, and then it ignores normal comman
 
 While this design runs, `radio_cli` isn't needed and its radio commands wouldn't reach the radio: the FPGA owns the radio SPI. Load `radio_spi_bridge` plus `radio_cli` again to get CLI control back.
 
-## 3. Bring-up checks (J2 debug pins, all 3.3 V, active high)
+## 3. Wiring and bring-up checks
+
+### Radio control pins (FPGA-only J2 Bank 0 pins)
+
+| Signal | FPGA pin | J2 | XPRO J100 |
+|---|---|---|---|
+| MOSI | ICE28 | J2-9 | 16 |
+| SELN | ICE31 | J2-10 | 15 |
+| SCK | ICE32 | J2-11 | 18 |
+| MISO | ICE34 | J2-12 | 17 |
+| IRQ | ICE36 | J2-13 | 9 |
+| RSTN | ICE38 | J2-14 | 7 |
+
+Keep the radio SPI off the RP-ICE PMOD pins (ICE18–27). Those nets also run to RP2350 GPIOs, and on the bench the extra stubs and the RP2350 pads made the SPI noisy and unreliable. Run a solid ground between the boards: a loose ground wire caused intermittent wrong reads.
+
+### Debug outputs (J2, all 3.3 V, active high)
 
 | Pin | J2 | Signal | Expected |
 |---|---|---|---|
-| 38 | 14 | `led_ready` | High a few ms after boot: the radio answered (PN 0x34/0x35) and reached RX in I/Q mode |
+| 42 | 15 | `led_ready` | High a few ms after boot: the radio answered (PN 0x34/0x35) and reached RX in I/Q mode |
 | 43 | 16 | `led_fault` | Low. Pulsing every ~100 ms means a check failed and the sequencer is retrying |
 | 4 | 34 | `dbg_rx_lock` | High most of the time: the LVDS RX word framing on RXD24 is locked |
 | 3 | 33 | `led_tx` | Pulses: an advertising packet goes out every 100 ms |
 | 2 | 32 | `led_rx_ok` | Pulses when a BLE packet with a good CRC is received on channel 37 |
 | 45 | 30 | `uart_txd` | 115200 8N1 dump of received packets. Connect to a 3.3 V USB-serial adapter's RX, plus GND |
 
+### Verified on the bench (2026-11-24)
+
+- **Radio SPI:** RF_PN 0x34, RF_VN 0x03. I/Q mode set: IQIFC0 0x36, IQIFC1 0x12 (0x02 + CHPM).
+- **RXCLK:** measured by the FPGA at 64.000 MHz.
+- **TX:** about 10 advertising packets/s with `CFG_EN_SYNC_POLL 1`. IQIFC2.SYNC is set in TXPREP before every packet, with zero faults.
+- **RF:** a DAC-override carrier at 2402.000 MHz appeared on the spectrum analyzer.
+- **RX:** LVDS lock 10/10 at every SKEWDRV 0–3, with `CFG_LVDS_RX_OFFSET 1`. About 17 BLE packets/s from nearby devices pass the CRC check on channel 37.
+
 ### SPI terminal (loader firmware, USB serial)
 
-Open the loader's COM port (PuTTY, Serial, any baud) and press Enter. It talks to the FPGA's debug SPI slave (`spi_dbg_slave.v`, RP2350 GPIO26/20/24/22 ↔ ICE21/27/26/20):
-- `stat`: FPGA status (ready/fault/counters, part number seen at bring-up) plus key radio registers read **through the FPGA's radio SPI**.
-- `rd <addr>`: read any radio register through the FPGA (hex, e.g. `rd 0x0202`).
-- `fpga <reg> [n]`: raw debug registers (map in `btle_mvp_top.v`).
-- `probe`, `scope`, `cap <addr>`: watch the radio SPI wires from the RP2350, which shares those nets (edge counts, raw waveform, decoded transfer).
+Open the loader's COM port (PuTTY, Serial, any baud) and press Enter. It talks to the FPGA's debug SPI slave (`spi_dbg_slave.v`, RP2350 GPIO26/20/24/22 ↔ ICE21/27/26/20).
 
-A phone scanner (for example nRF Connect) should show a non-connectable advertiser named **BTLE** at `C0:FF:EE:00:00:01` on channel 37.
+| Command | Does |
+|---|---|
+| `stat` | FPGA status (ready/fault/counters, part number seen at bring-up) plus key radio registers, read **through the FPGA's radio SPI** |
+| `rd <addr>` / `wr <addr> <val>` | Read or write any radio register through the FPGA (hex) |
+| `fpga <reg> [n]` / `fw <reg> <val>` | Raw FPGA debug registers (map in `btle_mvp_top.v`) |
 
-Troubleshooting (all values are in `btle_mvp_config.vh`):
-- **`led_fault` pulsing, `led_ready` never high.** SPI or radio power. Radio SPI is on the RP-ICE PMOD pins: SCK ICE18 → J100-18, MOSI ICE23 → J100-16, MISO ICE19 ← J100-17, SELN ICE25 → J100-15. Also check 3.3 V on J100-20, ground, and the RSTN wire (J2-12 → J100-7). Use the loader terminal (below) to see what the FPGA reads back.
-- **Radio reads intermittently wrong or `0x00` (seen on the bench, 2026-11-24).** The radio answers but decodes the wrong register; most likely SCK ringing on long jumper wires. Add 33–100 Ω in series with SCK (and MOSI/SELN) at the pico2-ice pin, run a ground wire alongside, keep the wires short. A slower SPI clock does not fix it.
-- **`led_ready` high but `dbg_rx_lock` never high.** RX LVDS: try `CFG_LVDS_RX_INVERT 1`, then `CFG_SKEWDRV` 3 or 1, then `CFG_LVDS_RX_SWAP_PAIR 1`. Pin-level DDR timing is not checked by nextpnr, so SKEWDRV is the bench knob.
-- **TX not seen by the phone.** Set `CFG_EN_SYNC_POLL 1`, so a missing TX I/Q sync turns into `led_fault`. Then try `CFG_LVDS_TX_INVERT 1` or `CFG_MSK_FREQ_SIGN 1`.
+Useful debug registers:
+
+| Register | Contents |
+|---|---|
+| 0x02 | Status |
+| 0x07 | Fault count |
+| 0x08 | TX packet count |
+| 0x09 | RX good-CRC count |
+| 0x14–0x16 | RXCLK cycles per ms (64000 = 64 MHz) |
+| 0x1A–0x1D | RXD24 toggles and ones per ms |
+| 0x18 | LVDS bench settings (below) |
+| 0x19 | Write: soft reset |
+
+Bits of 0x18:
+
+| Bit(s) | Meaning |
+|---|---|
+| 0 | Invert TXD |
+| 1 | Invert TXCLK |
+| 2 | Invert RXD |
+| 3 | Swap RX pair |
+| 5:4 | SKEWDRV |
+| 6 | RX 1-bit offset |
+| 7 | Hold the TX loop (manual radio control) |
+
+Default 0x60.
+
+`probe`, `scope` and `cap` watch the RP-ICE nets ICE18/19/23/25 from the RP2350. The radio no longer uses those pins.
+
+### Carrier test (RF path only, no LVDS)
+
+Pause the TX loop and drive the radio by hand from the terminal:
+
+```
+fw 18 E0
+wr 0x0203 0x03
+wr 0x0227 0xFE
+wr 0x0228 0xBF
+wr 0x0203 0x04
+```
+
+That holds the loop, goes to TXPREP, turns on the DAC override and enters TX. Expect a tone at 2402.000 MHz, about 0 dBm at PAC 0x71.
+
+To stop it:
+
+```
+wr 0x0203 0x03
+wr 0x0227 0x00
+wr 0x0228 0x00
+wr 0x0203 0x05
+fw 18 60
+```
+
+Advertising packets are only about 0.3 ms long, every 100 ms. To see them on a spectrum analyzer, use max-hold or zero-span with a video trigger. A phone scanner (for example nRF Connect) should show a non-connectable advertiser named **BTLE** at `C0:FF:EE:00:00:01` on channel 37.
+
+### Troubleshooting (values in `btle_mvp_config.vh`)
+
+- **`led_fault` pulsing, `led_ready` never high.** SPI or radio power. Check the pin table above, 3.3 V on J100-20, the ground, and the RSTN wire. Use `stat` to see what the FPGA reads back.
+- **Radio reads intermittently wrong or `0x00`.** Signal integrity:
+  - check ground continuity first;
+  - keep the SPI wires short;
+  - add 33–100 Ω in series with SCK, MOSI and SELN at the FPGA pin.
+
+  A slower SPI clock does not fix it.
+- **Reading IQIFC2.SYNC.** It is only meaningful in TXPREP or TX. It always reads 0 in RX, so check it with `CFG_EN_SYNC_POLL 1` rather than by hand.
+- **`dbg_rx_lock` never high.** Sweep the 0x18 bits at runtime (`fw 18 ..` then `fw 19 01`). Bit 6 (RX offset) was the fix on this setup, where bit 31 arrives on the falling-edge sample. Then set the matching `CFG_` default.

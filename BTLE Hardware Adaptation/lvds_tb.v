@@ -68,6 +68,7 @@ module lvds_tb;
     wire               rx_valid, rx_lock, rx_valid_bb;
 
     lvds_rx u_rx (
+        .inv(1'b0), .swap(1'b0), .offs(1'b0), .dbg_bit(),
         .rxclk(rxclk), .rst(rst), .rxd(rxd), .slot(slot),
         .rx_i(rx_i), .rx_q(rx_q), .rx_valid(rx_valid), .rx_lock(rx_lock),
         .rx_i_bb(rx_i_bb), .rx_q_bb(rx_q_bb), .rx_valid_bb(rx_valid_bb)
@@ -106,6 +107,7 @@ module lvds_tb;
     end
 
     lvds_tx #(.MIN_IDLE_WORDS(MIN_IDLE)) u_tx (
+        .inv_data(1'b0), .inv_clk(1'b0),
         .rxclk(rxclk), .rst(rst), .slot(slot),
         .tx_i(tx_i), .tx_q(tx_q), .tx_ctrl(1'b0), .stream_en(stream_en),
         .txd(txd), .txclk(txclk), .tx_data_active(tx_act)

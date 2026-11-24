@@ -48,7 +48,7 @@ module rf215_init_tb;
         .stream_en(stream_en), .tx_go(tx_go),
         .tx_data_done(tx_data_done), .tx_done(tx_done),
         .ready(ready), .fault(fault), .listening(listening),
-        .dbg_req(dbg_req), .dbg_addr(dbg_addr), .dbg_data(dbg_data), .dbg_done(dbg_done),
+        .skewdrv_in(2'd2), .hold(1'b0), .dbg_wr(1'b0), .dbg_wdata(8'h00), .dbg_req(dbg_req), .dbg_addr(dbg_addr), .dbg_data(dbg_data), .dbg_done(dbg_done),
         .pn_seen(pn_seen), .last_rx(), .pc_out(), .state_out(), .fault_cnt()
     );
 

@@ -39,6 +39,7 @@ module rf215_init #(
     parameter BOOT_CLKS       = 1600,       // after RSTN release; datasheet max 1 us to TRXOFF
     parameter POLL_MAX        = 4096,       // tries per status poll
     parameter POLL_GAP_CLKS   = 16,
+    parameter CHECK_PN        = 1,          // 0: record the part number but do not require it (bench)
     parameter PN_GAP_CLKS     = 16,         // gap between part-number retries after reset; the real
                                             //  radio answers 0x00 while polled back to back, so
                                             //  use ~1 ms (12000 at 12 MHz) on hardware
@@ -101,6 +102,11 @@ module rf215_init #(
     // debug: read any radio register between sequencer transactions.  A dbg_req pulse is
     // served the next time the sequencer is idle (listening, or waiting out a fault); dbg_done
     // then rises and dbg_data holds the value until the next request.
+    input  wire [1:0]  skewdrv_in,          // IQIFC1.SKEWDRV written at bring-up (runtime)
+    input  wire        hold,                // 1: stay in the listening state (no TX bursts) so the
+                                            //    radio can be driven by debug reads/writes
+    input  wire        dbg_wr,              // with dbg_req: write dbg_wdata instead of reading
+    input  wire [7:0]  dbg_wdata,
     input  wire        dbg_req,
     input  wire [13:0] dbg_addr,
     output reg  [7:0]  dbg_data,
@@ -165,7 +171,7 @@ module rf215_init #(
                 6'd0:  rom = {OP_PN,   A_PN,     8'h00, 8'h00};
                 6'd1:  rom = {OP_POLL, A_STATE,  CMD_TRXOFF, ST_MASK};
                 6'd2:  rom = {OP_WR,   A_IQIFC0, IQIFC0_VAL, 8'h00};
-                6'd3:  rom = {OP_WR,   A_IQIFC1, {1'b0, 3'd1, 2'b00, SKEWDRV}, 8'h00}; // CHPM=1
+                6'd3:  rom = {OP_WR,   A_IQIFC1, {1'b0, 3'd1, 2'b00, skewdrv_in}, 8'h00}; // CHPM=1
                 6'd4:  rom = {OP_WR,   A_CS,     8'h08, 8'h00};
                 6'd5:  rom = {OP_WR,   A_CCF0L,  CCF0[7:0],  8'h00};
                 6'd6:  rom = {OP_WR,   A_CCF0H,  CCF0[15:8], 8'h00};
@@ -392,7 +398,7 @@ module rf215_init #(
                             // sub-GHz-only AT86RF215M and has no 2.4 GHz radio.
                             // Retried like a state poll: the real radio returns 0x00 until its
                             // crystal oscillator has started after RSTN (seen on hardware).
-                            if (spi_rx == 8'h34 || spi_rx == 8'h35) begin
+                            if (!CHECK_PN || spi_rx == 8'h34 || spi_rx == 8'h35) begin
                                 pc    <= pc + 6'd1;
                                 state <= S_FETCH;
                             end else if (poll_cnt != POLL_MAX) begin
@@ -434,6 +440,8 @@ module rf215_init #(
                     if (dbg_pend) begin                 // serve a debug read; timer resumes after
                         dbg_ret <= S_WAIT_PERIOD;
                         state   <= S_DBG_START;
+                    end else if (hold) begin
+                        timer <= 32'd0;                 // paused: the next burst waits for !hold
                     end else if (timer == TX_PERIOD_CLKS) begin
                         pc    <= pc + 6'd1;
                         state <= S_FETCH;
@@ -480,7 +488,7 @@ module rf215_init #(
                 end
 
                 S_DBG_START: begin
-                    spi_tx    <= {2'b00, dbg_addr, 8'h00};
+                    spi_tx    <= dbg_wr ? {2'b10, dbg_addr, dbg_wdata} : {2'b00, dbg_addr, 8'h00};
                     spi_start <= 1'b1;
                     state     <= S_DBG_WAIT;
                 end

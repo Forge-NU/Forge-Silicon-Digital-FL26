@@ -38,11 +38,16 @@ module lvds_rx #(
     input  wire               rst,           // synchronous to rxclk
     input  wire               rxd,           // from the SN65LVDS049 (ROUT2)
     input  wire               slot,          // from bb_clkgen
+    input  wire               inv,           // runtime: invert RXD (XOR with INVERT), any domain
+    input  wire               swap,          // runtime: swap pair order (XOR with SWAP_PAIR)
+    input  wire               offs,          // runtime: words start on the falling-edge sample
+                                             //  (bit 31 on falling RXCLK, e.g. RXCLK P/N swapped)
 
     output reg  signed [12:0] rx_i,
     output reg  signed [12:0] rx_q,
     output reg                rx_valid,
     output wire               rx_lock,
+    output wire               dbg_bit,       // rising-edge sample of RXD (for activity metering)
 
     output reg  signed [12:0] rx_i_bb,
     output reg  signed [12:0] rx_q_bb,
@@ -62,9 +67,25 @@ module lvds_rx #(
         q_fall_r <= q_fall;
     end
 
-    wire b_rise = q_rise_r ^ INVERT[0];
-    wire b_fall = q_fall_r ^ INVERT[0];
-    wire [1:0] pair = SWAP_PAIR ? {b_fall, b_rise} : {b_rise, b_fall};
+    reg [1:0] inv_s, swap_s, offs_s;
+    reg       inv_r, swap_r, offs_r;
+    always @(posedge rxclk) begin
+        inv_s  <= {inv_s[0], inv};
+        swap_s <= {swap_s[0], swap};
+        offs_s <= {offs_s[0], offs};
+        inv_r  <= INVERT[0] ^ inv_s[1];
+        swap_r <= SWAP_PAIR[0] ^ swap_s[1];
+        offs_r <= offs_s[1];
+    end
+    assign dbg_bit = q_rise_r;
+    wire b_rise = q_rise_r ^ inv_r;
+    wire b_fall = q_fall_r ^ inv_r;
+    // offset mode pairs the previous falling sample with this rising sample, i.e. the word's
+    // bit order is fall(k), rise(k+1), fall(k+1), ...
+    reg b_fall_prev;
+    always @(posedge rxclk) b_fall_prev <= b_fall;
+    wire [1:0] pair = offs_r ? {b_fall_prev, b_rise} :
+                      swap_r ? {b_fall, b_rise} : {b_rise, b_fall};
 
     reg  [31:0] sr;
     wire [31:0] sr_n = {sr[29:0], pair};

@@ -10,7 +10,8 @@
 // This wrapper only fixes the board-level choices:
 //   * rst_ext is tied low (the design has its own power-on reset).
 //   * dbg_rf_irq is left unconnected on a pin (it is readable over the debug SPI port).
-//   * Radio SPI on the RP-ICE PMOD pins: SCK ICE18, MOSI ICE23, MISO ICE19, SELN ICE25.
+//   * Radio SPI on FPGA-only J2 Bank 0 pins: SCK ICE32, MOSI ICE28, MISO ICE34, SELN ICE31;
+//     RSTN ICE38, IRQ ICE36 (moved off the RP2350-shared pins to cut noise).
 //   * Debug SPI slave for the RP2350 on the other RP-ICE pins (GPIO26 SCK -> ICE21,
 //     GPIO20 MOSI -> ICE27, GPIO24 MISO <- ICE26, GPIO22 CS -> ICE20).  The loader firmware's
 //     terminal uses it to read status and radio registers through the FPGA.
